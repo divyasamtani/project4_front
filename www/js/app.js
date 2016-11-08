@@ -1,41 +1,4 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
-
-
-.controller('TodoCtrl', function($scope, $ionicPopup, $ionicListDelegate) {
-  $scope.tasks =
-    [
-      {title: "First", completed: true},
-      {title: "Second", completed: true},
-      {title: "Third", completed: false},
-    ];
-
-   $scope.newTask = function() {
-    $ionicPopup.prompt({
-      title: "New Task",
-      template: "Enter task:",
-      inputPlaceholder: "What do you need to do?",
-      okText: 'Create task'
-    }).then(function(res) {  // promise
-      if (res) $scope.tasks.push({title: res, completed:false});
-    })
-   };
-
-   $scope.edit = function(task) {
-    $scope.data = { response: task.title };
-    $ionicPopup.prompt({
-      title: "Edit Task",
-      scope: $scope
-    }).then(function(res) { // promise
-      if (res !== undefined) task.title = $scope.data.response;
-      $ionicListDelegate.closeOptionButtons()
-    })
-   };
-})
+var app = angular.module('project4', ['ionic', 'ui.router', 'ng-token-auth'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -53,6 +16,104 @@ angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
   });
-})
+});
+
+// App.config
+
+app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($stateProvider, $urlRouterProvider, $authProvider) {
+
+  // Configure Auth Provider
+  $authProvider.configure({
+    apiUrl: 'http://localhost:3000',
+    authProviderPaths: {
+      facebook: '/auth/facebook'
+    },
+    omniauthWindowType: 'newWindow'
+  });
+
+  $stateProvider
+
+// Login - default
+  .state('login',{
+    url: '/',
+    templateUrl: "templates/auth/login.html",
+    controller: 'LoginCtrl'
+  })
+
+// Abstract for tabs - User must be validated
+  .state('tab', {
+    url: "/tab",
+    abstract: true,
+    templateUrl: "templates/abstracts/tabs.html",
+    resolve: {
+      auth: function($auth) {
+      return $auth.validateUser();
+      }
+    }
+  })
+
+// Home
+  .state('tab.home',{
+    url: '/home',
+    views: {
+      'tab-home': {
+        templateUrl: "templates/tabs/home.html",
+        controller: 'HomeCtrl'
+      }
+    }
+  })
+
+// Login
+  .state('tab.search',{
+    url: '/search',
+    views: {
+      'tab-search': {
+        templateUrl: "templates/tabs/search.html",
+        controller: 'SearchCtrl'
+      }
+    }
+  })
+
+// Login
+  .state('tab.messages',{
+    url: '/messages',
+    views: {
+      'tab-messages': {
+        templateUrl: "templates/tabs/messages.html",
+        controller: 'MessagesCtrl'
+      }
+    }
+  })
+
+// Login
+  .state('tab.notes',{
+    url: '/notes',
+    views: {
+      'tab-notes': {
+        templateUrl: "templates/tabs/notes.html",
+        controller: 'NotesCtrl'
+      }
+    }
+  })
+
+// Login
+  .state('tab.profile',{
+    url: '/profile',
+    views: {
+      'tab-profile': {
+        templateUrl: "templates/tabs/profile.html",
+        controller: 'ProfileCtrl'
+      },
+      //  'map': {
+      //       templateUrl: '#',
+      //       controller: 'MapCtrl'
+      // }
+    }
+  });
+
+  $urlRouterProvider.otherwise('/');
+}]);
+
+
 
 
