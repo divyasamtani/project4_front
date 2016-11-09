@@ -40,19 +40,26 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     controller: 'LoginCtrl'
   })
 
+// Welcome Screen (after sign up)
+  .state('welcome_screen',{
+    url: '/welcome',
+    templateUrl: "templates/inner_pages/welcome_screen.html",
+    controller: 'WelcomeScreenCtrl'
+  })
+
 // Abstract for tabs - User must be validated
   .state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/abstracts/tabs.html",
-    resolve: {
-      auth: function($auth) {
-      return $auth.validateUser();
-      }
-    }
+    // resolve: {
+    //   auth: function($auth) {
+    //   return $auth.validateUser();
+    //   }
+    // }
   })
 
-// Home
+// Home*****************************************************
   .state('tab.home',{
     url: '/home',
     views: {
@@ -63,7 +70,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Login
+// Search***************************************************
   .state('tab.search',{
     url: '/search',
     views: {
@@ -74,7 +81,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Login
+// Messages***************************************************
   .state('tab.messages',{
     url: '/messages',
     views: {
@@ -85,7 +92,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Login
+// NOTES****************************************************
   .state('tab.notes',{
     url: '/notes',
     views: {
@@ -96,24 +103,86 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Login
+// // Show one note
+//   .state('tab.notes.show',{
+//     url: '/notes/:id',
+//     views: {
+//       'tab-notes@tab': {
+//         templateUrl: "templates/inner_pages/show_travel_note.html",
+//         // controller: 'ProfileCtrl'
+//       }
+//     }
+//   })
+
+// Create / Edit Note
+  .state('tab.notes.create_edit',{
+    url: '/create_edit',
+    views: {
+      'tab-notes@tab': {
+        templateUrl: "templates/inner_pages/create_edit_note.html",
+        // controller: 'ProfileCtrl'
+      }
+    }
+  })
+
+
+// PROFILE***********************************************
+
   .state('tab.profile',{
     url: '/profile',
     views: {
       'tab-profile': {
         templateUrl: "templates/tabs/profile.html",
         controller: 'ProfileCtrl'
-      },
-      //  'map': {
-      //       templateUrl: '#',
-      //       controller: 'MapCtrl'
-      // }
+      }
+    }
+  })
+
+// Edit Profile (Child of Profile)
+  .state('tab.profile.edit',{
+    url: '/edit',
+    views: {
+      'tab-profile@tab': {
+        templateUrl: "templates/inner_pages/edit_profile.html",
+        controller: 'EditProfileCtrl'
+      }
+    }
+  })
+
+// FRIENDS**********************************************
+
+// See All Friends (Child of Profile)
+  .state('tab.profile.friends',{
+    url: '/friends',
+    views: {
+      'tab-profile@tab': {
+        templateUrl: "templates/inner_pages/index_user_friends.html",
+        controller: 'FriendsCtrl'
+      }
+    }
+  })
+
+// Show Friend (Child of Friends)
+  .state('tab.profile.friends.show',{
+    url: '/:id',
+    views: {
+      'tab-profile@tab': {
+        templateUrl: "templates/inner_pages/show_user_friend.html",
+        controller: 'FriendsCtrl'
+      }
+    }
+  })
+
+// Add Friend (Child of Friends)
+  .state('tab.profile.friends.add',{
+    url: '/add',
+    views: {
+      'tab-profile@tab': {
+        templateUrl: "templates/inner_pages/add_friendship.html",
+        controller: 'FriendsCtrl'
+      }
     }
   });
 
   $urlRouterProvider.otherwise('/');
 }]);
-
-
-
-

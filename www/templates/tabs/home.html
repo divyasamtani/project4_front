@@ -1,12 +1,17 @@
 <ion-view view-title="Home" name="tab-home">
   <ion-content class="padding">
-    <div class="list card">
-      <div class="item item-divider">Template Content</div>
-      <div class="item item-body">
-        <div>
-          This is a blank template.
-        </div>
-      </div>
-    </div>
+
+<!--     <ion-refresher on-refresh="doRefresh()"></ion-refresher> -->
+    <ion-list>
+      <ion-item class="user-avatar row" ng-repeat="user in users">
+<!--         <img src="{{user.picture.thumbnail}}" /> -->
+        <div class="home-user-img col col-20"></div>
+
+        <div class="user-list-name col col-75">{{user.name}} is in {{user.location}} </div>
+
+      </ion-item>
+    </ion-list>
+<!--     <ion-infinite-scroll on-infinite="loadMore()" distance="5%"></ion-infinite-scroll>
+ -->
   </ion-content>
 </ion-view>

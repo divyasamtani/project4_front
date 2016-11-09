@@ -1,5 +1,7 @@
 app.controller('ProfileCtrl', ['$scope', '$auth', '$state', function($scope, $auth, $state){
 
+
+// SIGN OUT BUTTON
     $scope.SignOutBtnClick = function() {
       $auth.signOut()
         .then(function(resp) {
@@ -10,5 +12,6 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', function($scope, $au
           // handle error response
         });
     };
+
 
 }]);

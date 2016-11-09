@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 
 
-/****************** Login Page *******************/
+/******************** LOGIN ********************/
 
 h1{
   font-size: 20px;
@@ -17,22 +17,138 @@ h1{
   margin-bottom: 50px;
 }
 
-/*************************************************/
+/************** HOME FEED & SEARCH ***************/
 
+.home-user-img {
+  background-color: gray;
+  height: 70px;
+  margin-top: 3px;
+}
 
+.user-list-name {
+  padding-top: 25px;
+  margin-left: 20px;
+}
 
+.user-avatar {
+  margin-bottom:10px;
+}
 
+#country-search-header {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: gray;
+}
 
+/********************** NOTES **********************/
 
+.travel_note_body {
+  height: 400px;
+}
 
-
-
-/****************** Profile Page *******************/
-
-#signoutbutton {
+.save-note-button {
   display: block;
   margin: auto;
 }
 
+/*
+.new-note {
+  font-size: 140px;
+}
+.new-note .ion-comppose {
+  font-size: 140px;
+}*/
 
-/*************************************************/
+/******************** USER PROFILE ********************/
+
+#profile-top-section{
+  height: 120px;
+  padding: 0px;
+}
+
+#profile-img {
+  background-color: gray;
+  height: 60%;
+}
+
+.travel-stat-label {
+  background-color: gray;
+}
+
+.travel-stat-number {
+  background-color: gray;
+  margin-left: 5px;
+}
+
+.profile-button {
+  margin:2px;
+  font-size: 10px;
+}
+
+#profile-bio {
+  padding-top: 40px;
+  margin-top: 10px;
+  background-color: gray;
+  height: 100px;
+}
+
+#profile-map {
+  padding-top: 40px;
+  margin-top: 10px;
+  background-color: gray;
+  height: 250px;
+}
+
+
+/******************** EDIT PROFILE ********************/
+
+#editprofile-img {
+  background-color: gray;
+  height: 60%;
+}
+
+#edit-user-location {
+  background-color: gray;
+  height: 30px;
+}
+
+#edit-user-bio {
+  background-color: gray;
+  height: 80px;
+}
+
+.edit-user-stats{
+  background-color: gray;
+  height: 30px;
+}
+
+#edit-vector-map{
+  background-color: gray;
+  height: 80px;
+}
+
+
+/******************* SEE FRIENDS ********************/
+
+
+.find-friends {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+
+/******************* ADD FRIEND ********************/
+
+.facebook-friends {
+  background-color: lightgray;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 80px;
+}
+
+.add-friend {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}

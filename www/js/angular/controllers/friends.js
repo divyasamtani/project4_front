@@ -1,6 +1,6 @@
-app.controller('SearchCtrl', ['$scope', '$auth', '$state', function($scope, $auth, $state){
+app.controller('FriendsCtrl', ['$scope', '$auth', '$state', function($scope, $auth, $state){
 
-    $scope.friendslist = [
+  $scope.friendslist = [
   {'id':1 , 'name' : 'ABC1'},
   {'id':2 , 'name' : 'ABC2'},
   {'id':3 , 'name' : 'ABC3'},

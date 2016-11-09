@@ -3,7 +3,7 @@ app.controller('LoginCtrl', ['$scope', '$auth', '$state', function($scope, $auth
   $scope.login = function () {
     $auth.authenticate('facebook').
     then(function(resp) {
-      $state.go('tab.profile');
+      $state.go('welcome_screen');
       console.log(resp);
     }).
     catch(function(resp) {

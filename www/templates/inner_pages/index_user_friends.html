@@ -1,0 +1,24 @@
+<ion-view view-title="My Friends" name="tab-profile-friends">
+  <ion-content class="padding">
+
+  <button class="button find-friends" ui-sref=".add">Find Friends</button>
+
+<!-- Search Friends -->
+  <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="search" placeholder="search friend">
+  </label>
+
+<!-- List of User's Friends -->
+  <ion-list>
+    <ion-item class="row" ng-repeat="friend in friendslist">
+     <div class="home-user-img col col-20"></div>
+     <div class="col col-75 user-list-name">
+       {{friend.name}}
+     </div>
+    </ion-item>
+  </ion-list>
+
+
+  </ion-content>
+</ion-view>
