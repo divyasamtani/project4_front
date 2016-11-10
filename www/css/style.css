@@ -66,67 +66,116 @@ h1{
   padding: 0px;
 }
 
-#profile-img {
-  background-color: gray;
+#profile-img-div {
   height: 60%;
+  margin-top: 15px;
+}
+
+#profile-img-div img {
+   display: block;
+   width: 100%;
 }
 
 .travel-stat-label {
-  background-color: gray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  margin:1px;
+  text-align: center;
 }
 
 .travel-stat-number {
-  background-color: gray;
-  margin-left: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  text-align: center;
+  margin:1px;
 }
 
 .profile-button {
   margin:2px;
-  font-size: 10px;
+  font-size: 15px;
 }
 
 #profile-bio {
-  padding-top: 40px;
+  padding-top: 5px;
   margin-top: 10px;
-  background-color: gray;
+  border-style: solid;
+  border-width: 1px;
   height: 100px;
 }
 
-#profile-map {
-  padding-top: 40px;
-  margin-top: 10px;
-  background-color: gray;
-  height: 250px;
+.profile-map {
+  margin-top: 20px;
+  height: 200px;
+  border-style: solid 2px;
 }
 
+.profile-buttons {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
 
 /******************** EDIT PROFILE ********************/
 
-#editprofile-img {
-  background-color: gray;
-  height: 60%;
+
+.edit-profile-user-image {
+  display: block;
+  margin: auto;
+  width: 20%;
 }
 
-#edit-user-location {
-  background-color: gray;
-  height: 30px;
+#edit-profile-username {
+  display: block;
+  margin: auto;
+  text-align: center;
 }
 
-#edit-user-bio {
-  background-color: gray;
-  height: 80px;
+.edit-user-location {
+  margin: auto;
+  width: 100%;
+}
+
+.edit-user-bio {
+  margin: auto;
+  width: 100%;
+  display: block;
 }
 
 .edit-user-stats{
-  background-color: gray;
   height: 30px;
+  margin:10px;
 }
 
-#edit-vector-map{
-  background-color: gray;
-  height: 80px;
+
+/*ACCORDION LIST STYLING*/
+
+/*
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }
 
+/*
+ * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
+ */
+
+ /*
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+*/
 
 /******************* SEE FRIENDS ********************/
 

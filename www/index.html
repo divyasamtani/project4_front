@@ -13,16 +13,26 @@
           .catch(err => console.log('Error', err));
       }
     </script>-->
+
+    <!-- CSS STYLESHEETS  -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/map.css" rel="stylesheet">
+
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
+
+    <!-- Jquery  -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-    <!-- your app's js -->
+
+    <!-- Controller js's -->
     <script src="js/app.js"></script>
     <script src="js/angular/controllers/login.js"></script>
     <script src="js/angular/controllers/home.js"></script>
@@ -32,8 +42,13 @@
     <script src="js/angular/controllers/search.js"></script>
     <script src="js/angular/controllers/welcome_screen.js"></script>
     <script src="js/angular/controllers/friends.js"></script>
-    <script src="js/angular/controllers/editFriends.js"></script>
+    <script src="js/angular/controllers/edit-profile.js"></script>
+    <script src="js/angular/controllers/map.js"></script>
 
+    <!-- Vector Map JavaScript -->
+    <script src="js/map/country_code.js"></script>
+    <script src="js/map/map.js"></script>
+    <script src="js/map/world-mill.js"></script>
 
     <!-- Ng-Token-Auth -->
     <script src="/lib/angular-cookie/angular-cookie.js"></script>

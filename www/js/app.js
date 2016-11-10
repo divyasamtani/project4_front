@@ -52,11 +52,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     url: "/tab",
     abstract: true,
     templateUrl: "templates/abstracts/tabs.html",
-    // resolve: {
-    //   auth: function($auth) {
-    //   return $auth.validateUser();
-    //   }
-    // }
+    resolve: {
+      auth: function($auth) {
+      return $auth.validateUser();
+      }
+    }
   })
 
 // Home*****************************************************

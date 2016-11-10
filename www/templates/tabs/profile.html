@@ -3,26 +3,27 @@
 
 <!-- Profile Image and Stats -->
     <div class="row" id="profile-top-section">
-      <div class="col col-25 col-center" id="profile-img">Profile Photo </div>
-      <div class="col col-center profile-stats">
+      <div class="col col-25" id="profile-img-div">
+        <img ng-src="{{user.image}}"  />
+      </div>
+      <div class="col profile-stats">
         <div class="row">
-          <div class="col travel-stat-label"> Travel Stat </div>
-           <div class="col travel-stat-number">Number</div>
+          <div class="col col-75 travel-stat-label"> # Countries Visited </div>
+           <div class="col travel-stat-number"> {{user.countries_visited}} </div>
         </div>
         <div class="row">
-          <div class="col travel-stat-label"> Travel Stat </div>
-           <div class="col travel-stat-number">Number</div>
+          <div class="col col-75 travel-stat-label"> World Coverage </div>
+           <div class="col travel-stat-number"> {{user.world_coverage}} %</div>
         </div>
         <div class="row">
-          <div class="col travel-stat-label"> Travel Stat </div>
-           <div class="col travel-stat-number">Number</div>
+          <div class="col col-100 travel-stat-label"> Current Location is ...  {{user.location_status}} </div>
         </div>
       </div>
     </div>
 
 <!-- Profile Buttons -->
     <div class="row row-center" id="profile-button-section">
-      <div class="col col-center">
+      <div class="profile-buttons">
 
         <button   class="button button-dark profile-button"
                   ng-click='SignOutBtnClick()'>
@@ -42,13 +43,12 @@
 <!-- Profile Bio -->
 
     <div class="row" id="profile-bio">
-      This is the Profile Bio.
+      {{user.bio}}
     </div>
 
 
 <!-- Map -->
-    <div class="row" id="profile-map">
-      This is the User Vector Map.
+    <div class="profile-map">
     </div>
 
 
