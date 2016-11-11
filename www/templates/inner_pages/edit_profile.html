@@ -1,70 +1,62 @@
 <ion-view view-title="Edit Profile" name="tab-profile-edit">
   <ion-content class="padding">
 
-<!-- Edit Profile Image and Name  -->
+<!-- Profile Image and Name  -->
 
     <img class="edit-profile-user-image" ng-src="{{user.image}}"  />
+    <div class="row" id="edit-profile-username"> {{user.name}} </div>
 
-
-    <div class="row" id="edit-profile-username">
-      {{user.name}}
-    </div>
-
-
-<!-- User Location -->
+<!-- Edit User Location -->
 
     <label class="item item-input edit-user-location">
-      <span class="input-label">Current Location</span>
+      <span class="input-label"> Current Location </span>
       <input type="text" placeholder="I'm in {{user.location_status}}!">
     </label>
 
-<!-- User Bio -->
+<!-- Edit User Bio -->
 
     <label class="item item-input edit-user-bio">
-      <span class="input-label">Bio</span>
+      <span class="input-label"> Bio </span>
       <input type="text" placeholder="{{user.bio}}">
     </label>
 
-<!-- User Stats  -->
+<!-- Edit User Stats  -->
 
     <div class="row edit-user-stats">
       <div class="col">
         # Countries Visited - {{user.countries_visited}}
       </div>
       <div class="col">
-          World Coverage - {{user.world_coverage}} %
+        World Coverage - {{user.world_coverage}} %
       </div>
     </div>
 
-<!-- User Map  -->
+<!-- ************************* User Map ******************************* -->
     <div class="row profile-map">
     </div>
 
-<!-- User Map  -->
   <!-- Header -->
     <h3 class="add-countries">
       Add your countries!
     </h3>
 
-  <!-- Country List -->
+  <!-- Start of Country List -->
     <ion-list>
-    <div ng-repeat="country in countries">
-      <ion-item class="item-stable"
-                ng-click="toggleGroup(group)"
-                ng-class="{active: isGroupShown(group)}">
-        <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-         &nbsp;
-          Continent {{country.continent}}
-      </ion-item>
-      <ion-item class="item-accordion"
-                ng-repeat="item in group.items"
-                ng-show="isGroupShown(group)">
+      <div ng-repeat="(continent, countries) in continents">
+        <ion-item class="item-stable"
+                  ng-click="toggleGroup(continent)"
+                  ng-class="{active: isGroupShown(continent)}">
+            <i class="icon" ng-class="isGroupShown(continent) ? 'ion-minus' : 'ion-plus'"></i>
+          &nbsp;
+          {{continent}}
+        </ion-item>
+        <ion-item class="item-accordion"
+                  ng-repeat="country in countries"
+                  ng-show="isGroupShown(continent)">
           {{country.name}}
-      </ion-item>
-    </div>
-  </ion-list>
-
-
+        </ion-item>
+      </div>
+    </ion-list>
   </ion-content>
 </ion-view>
 

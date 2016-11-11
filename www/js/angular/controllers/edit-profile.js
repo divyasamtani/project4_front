@@ -19,32 +19,34 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
 
 // LOGIC FOR ACCORDION LIST
 
-// $scope.groups = [];
-//   for (var i=0; i<10; i++) {
-//     $scope.groups[i] = {
-//       name: i,
-//       items: []
-//     };
-//     for (var j=0; j<3; j++) {
-//       $scope.groups[i].items.push(i + '-' + j);
-//     }
-//   }
 
-  /*
-   * if given group is the selected group, deselect it
-   * else, select the given group
-   */
+var getCountries = function (){
+  var url = "http://localhost:3000/api/countries";
 
-  // $scope.toggleGroup = function(group) {
-  //   if ($scope.isGroupShown(group)) {
-  //     $scope.shownGroup = null;
-  //   } else {
-  //     $scope.shownGroup = group;
-  //   }
-  // };
-  // $scope.isGroupShown = function(group) {
-  //   return $scope.shownGroup === group;
-  // };
+  $http.get(url)
+  .success(function(continents){
+    console.log(continents);
+    $scope.continents = continents;
+  })
+  .error(function(data) {
+    console.log('server side error occurred');
+  });
+};
 
+getCountries();
 
-  }]);
+  /** TOGGLE FUNCTION FOR SELECTING THE GROUP**/
+
+ $scope.toggleGroup = function(group) {
+    console.info(group);
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
+
+}]);
