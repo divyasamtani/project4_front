@@ -28,7 +28,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     authProviderPaths: {
       facebook: '/auth/facebook'
     },
-    omniauthWindowType: 'newWindow'
+    omniauthWindowType: 'newWindow',
+    storage: 'localStorage'
   });
 
   $stateProvider

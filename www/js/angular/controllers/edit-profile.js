@@ -29,7 +29,6 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
       url: 'http://localhost:3000/api/user/user_countries',
       method: 'GET'
     }).then(function(resp){
-      console.log(resp);
       selectCountries(countries, resp.data);
     }, function(resp){
       console.log(resp);
@@ -43,7 +42,6 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
     $http.get(url)
     .success(function(continents){
       $scope.continents = continents;
-      window.continents = $scope.continents;
       var countries = [];
 
       for (var key in $scope.continents) {
@@ -78,7 +76,6 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
         }
       }
     }).then(function(resp){
-      console.log(resp);
       country.userCountryID = resp.data.id;
     }, function(resp){
       console.log(resp);
