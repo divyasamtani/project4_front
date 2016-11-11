@@ -53,7 +53,11 @@
         <ion-item class="item-accordion"
                   ng-repeat="country in countries"
                   ng-show="isGroupShown(continent)">
-          {{country.name}}
+          <ion-checkbox ng-model="country.checked"
+                        ng-checked="country.checked"
+                        ng-change="updateUserCountry(country)">
+            {{country.name}}
+          </ion-checkbox>
         </ion-item>
       </div>
     </ion-list>
@@ -61,4 +65,3 @@
 </ion-view>
 
 <!-- ******************************************* -->
-
