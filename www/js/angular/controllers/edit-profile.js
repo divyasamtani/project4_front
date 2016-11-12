@@ -1,8 +1,10 @@
 app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+  const COUNTRYCOUNT = 32;
+  var mapObject;
 
-// CREATE MAP
-  function generateMap () {
-    mapObject = $('.profile-map').vectorMap({
+  // CREATE MAP
+  var generateMap = function () {
+    mapObject = $('.profile-edit-map').vectorMap({
       map: 'world_mill',
       zoomOnScroll: false,
       regionStyle: {
@@ -11,17 +13,39 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
         }
       }
     }).vectorMap('get', 'mapObject');
-  }
+  };
+
+  var extractCountryCode = function () {
+    var countryCode = [];
+    for (var i = 0; i < $scope.countries.length; i++) {
+      if ($scope.countries[i].checked) {
+        countryCode.push($scope.countries[i].country_code);
+      }
+    }
+
+    $scope.user.countries_visited = countryCode.length;
+    $scope.user.world_coverage    = $scope.user.countries_visited / COUNTRYCOUNT * 100;
+
+    return countryCode;
+  };
+
+  var updateMap = function () {
+    mapObject.clearSelectedRegions();
+    // Update map with the appropriate country codes
+    mapObject.setSelectedRegions(extractCountryCode());
+  };
 
   var selectCountries = function (countries, userCountries) {
     for (var i = 0; i < userCountries.length; i++) {
       for (var k = 0; k < countries.length; k++) {
         if (countries[k].id === userCountries[i].country_id) {
           countries[k].checked = true;
-          countries[k].userCountryID = userCountries[i].country_id;
+          countries[k].userCountryID = userCountries[i].id;
         }
       }
     }
+
+    updateMap();
   };
 
   var getUserCountries = function (countries) {
@@ -42,17 +66,17 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
     $http.get(url)
     .success(function(continents){
       $scope.continents = continents;
-      var countries = [];
+      $scope.countries = [];
 
       for (var key in $scope.continents) {
-        countries.push($scope.continents[key]);
+        $scope.countries.push($scope.continents[key]);
       }
 
-      countries = countries.reduce(function(a, b) {
+      $scope.countries = $scope.countries.reduce(function(a, b) {
         return a.concat(b);
       }, []);
 
-      getUserCountries(countries);
+      getUserCountries($scope.countries);
     })
     .error(function(data) {
       console.log('server side error occurred');
@@ -77,6 +101,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
       }
     }).then(function(resp){
       country.userCountryID = resp.data.id;
+      updateMap();
     }, function(resp){
       console.log(resp);
     });
@@ -88,6 +113,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
       method: 'DELETE'
     }).then(function(resp){
       delete country.userCountryID;
+      updateMap();
     }, function(resp){
       console.log(resp);
     });
@@ -101,8 +127,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
     }
   };
 
-
-// TOGGLE ACCORDION LIST
+  // TOGGLE ACCORDION LIST
   $scope.toggleGroup = function(group) {
     console.info(group);
     if ($scope.isGroupShown(group)) {
@@ -115,65 +140,4 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
   $scope.isGroupShown = function(group) {
     return $scope.shownGroup === group;
   };
-
-// ********************
-
-// // UPDATE MAP WITH CHECKED LOCATIONS
-//   function updateMap () {
-//     mapObject.clearSelectedRegions();
-//   // Update map with the appropriate country codes
-//     mapObject.setSelectedRegions(locations)
-//   }
-
-// // SAVE LOCATIONS TO CURRENT USER AND UPDATE TRAVEL STATS
-
-//   var url = "http://localhost:3000/api/user/user_countries";
-
-//   $http.post(url)
-//     .success(function(user_countries){
-//       $scope.user_countries = user_countries;
-//     })
-//     .error(function(data) {
-//       console.log('server side error occurred');
-//     });
-
-
-  // function saveTravelStats(){
-  //   $.ajax({
-  //     url: '/user',
-  //     method: 'PUT',
-  //     data: {
-  //       locations: locations,
-  //       worldCoverage: worldCoverage,
-  //       travelPercentage: travelPercentage,
-  //       travelLevel: travelLevel
-  //     }
-  //   }).done(function(data){
-  //     console.log("locations saved");
-  //   });
-  // }
-
-// UPDATE CHECKBOXES
-
- // function updateCheckbox(){
-  //   if (window.location.pathname === "/secret") {
-  //     for(var i = 0; i < locations.length; i++) {
-  //       var location = locations[i];
-  //       var name     = countryName[location];
-  //       $('input[type=checkbox][value="' + name + '"]').prop('checked', true);
-  //     }
-  //   }
-  // }
-
-// REPOPULATE MAP ON PROFILE PAGE
-  // function repopulateMap () {
-  //   var $loc = $('#loc');
-  //   if($loc.length == 1){
-  //     locations = JSON.parse($loc.text());
-
-  //     updateMap();
-  //     updateTravelStats();
-  //   }
-  // }
-
 }]);

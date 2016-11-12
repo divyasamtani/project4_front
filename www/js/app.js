@@ -131,6 +131,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
 
   .state('tab.profile',{
     url: '/profile',
+    cache: false,
     views: {
       'tab-profile': {
         templateUrl: "templates/tabs/profile.html",
@@ -142,6 +143,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
 // Edit Profile (Child of Profile)
   .state('tab.profile.edit',{
     url: '/edit',
+    cache: false,
     views: {
       'tab-profile@tab': {
         templateUrl: "templates/inner_pages/edit_profile.html",

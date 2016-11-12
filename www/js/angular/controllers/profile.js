@@ -1,22 +1,9 @@
 app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+  const COUNTRYCOUNT = 32;
+  var mapObject;
 
-// SET PROFILE INFORMATION
-
-// function getUserInfo(){
-//   var url = "http://localhost:3000/api/user";
-
-//   $http.get(url)
-//   .success(function(user){
-//     $scope.current_user = user;
-//   })
-//   .error(function(data) {
-//     console.log('server side error occurred');
-//   });
-
-// }
-
-// GENERATE MAP
-  function generateMap () {
+  // CREATE MAP
+  var generateMap = function () {
     mapObject = $('.profile-map').vectorMap({
       map: 'world_mill',
       zoomOnScroll: false,
@@ -26,20 +13,92 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', function($s
         }
       }
     }).vectorMap('get', 'mapObject');
-  }
+  };
 
-  generateMap();
+  var extractCountryCode = function () {
+    var countryCode = [];
+    for (var i = 0; i < $scope.countries.length; i++) {
+      if ($scope.countries[i].checked) {
+        countryCode.push($scope.countries[i].country_code);
+      }
+    }
 
-// SIGN OUT BUTTON
-    $scope.SignOutBtnClick = function() {
-      $auth.signOut()
-        .then(function(resp) {
-          console.log(resp);
-          $state.go('login');
-        })
-        .catch(function(resp) {
-          // handle error response
-        });
-    };
+    $scope.user.countries_visited = countryCode.length;
+    $scope.user.world_coverage    = $scope.user.countries_visited / COUNTRYCOUNT * 100;
 
+    return countryCode;
+  };
+
+  var updateMap = function () {
+    mapObject.clearSelectedRegions();
+    // Update map with the appropriate country codes
+    mapObject.setSelectedRegions(extractCountryCode());
+  };
+
+  var selectCountries = function (countries, userCountries) {
+    for (var i = 0; i < userCountries.length; i++) {
+      for (var k = 0; k < countries.length; k++) {
+        if (countries[k].id === userCountries[i].country_id) {
+          countries[k].checked = true;
+          countries[k].userCountryID = userCountries[i].id;
+        }
+      }
+    }
+
+    updateMap();
+  };
+
+  var getUserCountries = function (countries) {
+    $http({
+      url: 'http://localhost:3000/api/user/user_countries',
+      method: 'GET'
+    }).then(function(resp){
+      selectCountries(countries, resp.data);
+    }, function(resp){
+      console.log(resp);
+    });
+  };
+
+  // GET COUNTRY INFO TO CREATE LIST
+  var getCountriesTemplate = function (){
+    var url = "http://localhost:3000/api/countries";
+
+    $http.get(url)
+    .success(function(continents){
+      $scope.continents = continents;
+      $scope.countries = [];
+
+      for (var key in $scope.continents) {
+        $scope.countries.push($scope.continents[key]);
+      }
+
+      $scope.countries = $scope.countries.reduce(function(a, b) {
+        return a.concat(b);
+      }, []);
+
+      getUserCountries($scope.countries);
+    })
+    .error(function(data) {
+      console.log('server side error occurred');
+    });
+  };
+
+  var init = function () {
+    generateMap();
+    getCountriesTemplate();
+  };
+
+  init();
+
+  // SIGN OUT BUTTON
+  $scope.SignOutBtnClick = function() {
+    $auth.signOut()
+      .then(function(resp) {
+        console.log(resp);
+        $state.go('login');
+      })
+      .catch(function(resp) {
+        // handle error response
+      });
+  };
 }]);
