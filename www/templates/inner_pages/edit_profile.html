@@ -1,4 +1,11 @@
 <ion-view view-title="Edit Profile" name="tab-profile-edit">
+
+  <ion-nav-buttons side="right">
+    <button ion-button class="ion-checkmark-round" id="save-edit-profile-button" ng-click="updateUserLocation()" type="submit">
+    </button>
+  </ion-nav-buttons>
+
+
   <ion-content class="padding">
 
 <!-- Profile Image and Name  -->
@@ -6,21 +13,21 @@
     <img class="edit-profile-user-image" ng-src="{{user.image}}"  />
     <div class="row" id="edit-profile-username"> {{user.name}} </div>
 
-<!-- Edit User Location -->
+<!-- Edit User Location and Bio -->
 
-    <label class="item item-input edit-user-location">
-      <span class="input-label"> Current Location </span>
-      <input type="text" placeholder="I'm in {{user.location_status}}!">
-    </label>
+    <form ng-submit="updateAccount(updateUserProfileForm)" role="form" ng-init="updateUserProfileForm = {location_status: null, bio: null}">
+      <div id="edit-user-location-div">
+        <label class="edit-user-location">Your Location </label>
+        <input type="text" name="location_status" ng-model="updateAccount.location_status">
+      </div>
+      <div>
+        <label class="edit-user-bio">Bio</label>
+        <input type="text" ng-model="updateAccount.bio">
+      </div>
+    </form>
 
-<!-- Edit User Bio -->
 
-    <label class="item item-input edit-user-bio">
-      <span class="input-label"> Bio </span>
-      <input type="text" placeholder="{{user.bio}}">
-    </label>
-
-<!-- Edit User Stats  -->
+<!-- **********************  Edit User Stats ********************* -->
 
     <div class="row edit-user-stats">
       <div class="col">
@@ -31,14 +38,14 @@
       </div>
     </div>
 
-<!-- ************************* User Map ******************************* -->
+<!-- ******************** User Map *************************** -->
     <div class="row profile-edit-map">
     </div>
 
   <!-- Header -->
-    <h3 class="add-countries">
+    <h4 class="add-countries">
       Add your countries!
-    </h3>
+    </h4>
 
   <!-- Start of Country List -->
     <ion-list>

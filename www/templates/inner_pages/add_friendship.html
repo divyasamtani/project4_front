@@ -1,21 +1,15 @@
 <ion-view view-title="Add Friend" name="tab-profile-friends-add">
   <ion-content class="padding">
 
-<!-- Top Section & Add Button -->
-  <div class="facebook-friends">
-    203 of your Facebook Friends are on Zealist
-  </div>
-  <button class="button add-friend" ng-click="addFriend()">Add friend</button>
+<!-- Search for Users -->
+  <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="search" placeholder="Search for User Name">
+  </label>
 
-<!-- List of Facebook Friends -->
-
-  <ion-list>
-    <ion-item ng-repeat="friend in friendslist">
-      {{friend.name}}
-    </ion-item>
-  </ion-list>
-
-
+<!-- Search for Users -->
+<!--   <button class="button add-friend" ng-click="addFriend()">Add friend</button>
+ -->
 
   </ion-content>
 </ion-view>

@@ -2,6 +2,19 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
   const COUNTRYCOUNT = 32;
   var mapObject;
 
+
+  // EDIT LOCATION AND BIO
+  $scope.updateUserLocation = function () {
+    $auth.updateAccount($scope.updateUserProfileForm)
+      .then(function(resp){
+        console.log(resp);
+      })
+      .catch(function(resp){
+        console.log(resp);
+      });
+  };
+
+
   // CREATE MAP
   var generateMap = function () {
     mapObject = $('.profile-edit-map').vectorMap({

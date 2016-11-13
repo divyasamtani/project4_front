@@ -3,17 +3,19 @@
 
   <button class="button find-friends" ui-sref=".add">Find Friends</button>
 
-<!-- Search Friends -->
-  <label class="item item-input">
+  <p ng-if="!dataLoaded">You have no friends right now</p>
+
+<!-- Search User Friends -->
+  <label class="item item-input" ng-if="dataLoaded">
     <i class="icon ion-search placeholder-icon"></i>
     <input type="search" placeholder="search friend">
   </label>
 
-<!-- List of User's Friends -->
-  <ion-list>
+<!-- List User's Friends -->
+  <ion-list ng-if="dataLoaded">
     <ion-item class="row" ng-repeat="friend in friendslist">
-     <div class="home-user-img col col-20"></div>
-     <div class="col col-75 user-list-name">
+     <div class="friend-img col col-20" ng-src="{{friend.image}}"></div>
+     <div class="col col-75 friend-name">
        {{friend.name}}
      </div>
     </ion-item>

@@ -83,15 +83,15 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
   })
 
 // Messages***************************************************
-  .state('tab.messages',{
-    url: '/messages',
-    views: {
-      'tab-messages': {
-        templateUrl: "templates/tabs/messages.html",
-        controller: 'MessagesCtrl'
-      }
-    }
-  })
+  // .state('tab.messages',{
+  //   url: '/messages',
+  //   views: {
+  //     'tab-messages': {
+  //       templateUrl: "templates/tabs/messages.html",
+  //       controller: 'MessagesCtrl'
+  //     }
+  //   }
+  // })
 
 // NOTES****************************************************
   .state('tab.notes',{
