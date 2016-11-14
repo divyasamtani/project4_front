@@ -1,4 +1,4 @@
-var app = angular.module('project4', ['ionic', 'ui.router', 'ng-token-auth'])
+var app = angular.module('project4', ['ionic', 'ui.router', 'ng-token-auth', 'ngResource'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -157,6 +157,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
 // See All Friends (Child of Profile)
   .state('tab.profile.friends',{
     url: '/friends',
+    cache: false,
     views: {
       'tab-profile@tab': {
         templateUrl: "templates/inner_pages/index_user_friends.html",
@@ -165,24 +166,25 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Show Friend (Child of Friends)
-  .state('tab.profile.friends.show',{
-    url: '/:id',
+// Search Users to Find Friend
+  .state('tab.profile.friends.add',{
+    url: '/add',
+    cache: false,
     views: {
       'tab-profile@tab': {
-        templateUrl: "templates/inner_pages/show_user_friend.html",
+        templateUrl: "templates/inner_pages/add_friendship.html",
         controller: 'FriendsCtrl'
       }
     }
   })
 
-// Add Friend (Child of Friends)
-  .state('tab.profile.friends.add',{
-    url: '/add',
+// Show Friend's Profile
+  .state('tab.profile.friends.show',{
+    url: '/:friendsID',
     views: {
       'tab-profile@tab': {
-        templateUrl: "templates/inner_pages/add_friendship.html",
-        controller: 'FriendsCtrl'
+        templateUrl: "templates/inner_pages/friend-profile.html",
+        controller: 'FriendProfileCtrl'
       }
     }
   });

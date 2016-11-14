@@ -52,13 +52,13 @@ h1{
 
 /************** HOME FEED & SEARCH ***************/
 
-.home-user-img .friend-img {
+.home-user-img {
   background-color: gray;
   height: 70px;
   margin-top: 3px;
 }
 
-.user-list-name .friend-name {
+.user-list-name {
   padding-top: 25px;
   margin-left: 20px;
 }
@@ -215,6 +215,11 @@ h1{
   margin-bottom: 10px;
 }
 
+.friend-img {
+/*Adjust width?*/
+}
+
+
 /******************* ADD FRIEND ********************/
 
 .facebook-friends {
@@ -230,7 +235,7 @@ h1{
   margin-bottom: 10px;
 }
 
-.find-user-name {
+.find-user-name, .friend-name {
   margin-top: 13px;
 }
 
@@ -240,7 +245,8 @@ h1{
   font-size: 23px;
 }
 
-.ion-plus-circled {
+.ion-plus-circled, .ion-ios-close-empty {
   font-size: 35px;
   margin-top: 5px;
 }
+

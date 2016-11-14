@@ -1,22 +1,25 @@
-app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$stateParams', function($scope, $auth, $state, $http, $stateParams){
   const COUNTRYCOUNT = 32;
   var mapObject;
-  $scope.updateUserProfileForm = {};
+  var friendsID = $stateParams.friendsID;
 
-  // EDIT LOCATION AND BIO
-  $scope.updateUserInfo = function () {
-    $auth.updateAccount($scope.updateUserProfileForm)
-      .then(function(resp){
-        console.log(resp);
-      })
-      .catch(function(resp){
-        console.log(resp);
-      });
+// SHOW FRIEND INFORMATION
+  var getFriendInfo = function() {
+    $http({
+      url: 'http://localhost:3000/api/users/' + friendsID,
+      method: 'GET'
+    }).then(function(resp){
+      console.log(resp);
+    }), function(resp){
+      console.log('error');
+    };
   };
+
+  getFriendInfo();
 
   // CREATE MAP
   var generateMap = function () {
-    mapObject = $('.profile-edit-map').vectorMap({
+    mapObject = $('.friend-profile-map').vectorMap({
       map: 'world_mill',
       zoomOnScroll: false,
       regionStyle: {
@@ -62,7 +65,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
 
   var getUserCountries = function (countries) {
     $http({
-      url: 'http://localhost:3000/api/user/user_countries',
+      url: 'http://localhost:3000/api/users/:id/user_countries',
       method: 'GET'
     }).then(function(resp){
       selectCountries(countries, resp.data);
@@ -79,8 +82,6 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
     .success(function(continents){
       $scope.continents = continents;
       $scope.countries = [];
-      console.log(continents);
-      console.log($scope.countries);
 
       for (var key in $scope.continents) {
         $scope.countries.push($scope.continents[key]);
@@ -104,54 +105,15 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
 
   init();
 
-  var createUserCountry = function (country, countryID) {
-    $http({
-      url: 'http://localhost:3000/api/user/user_countries',
-      method: 'POST',
-      data: {
-        user_country: {
-          country_id: countryID
-        }
-      }
-    }).then(function(resp){
-      country.userCountryID = resp.data.id;
-      updateMap();
-    }, function(resp){
-      console.log(resp);
-    });
-  };
-
-  var destroyUserCountry = function (country, userCountryID) {
-    $http({
-      url: 'http://localhost:3000/api/user/user_countries/' + userCountryID,
-      method: 'DELETE'
-    }).then(function(resp){
-      delete country.userCountryID;
-      updateMap();
-    }, function(resp){
-      console.log(resp);
-    });
-  };
-
-  $scope.updateUserCountry = function (country) {
-    if (country.checked) {
-      createUserCountry(country, country.id);
-    } else {
-      destroyUserCountry(country, country.userCountryID);
-    }
-  };
-
-  // TOGGLE ACCORDION LIST
-  $scope.toggleGroup = function(group) {
-    console.info(group);
-    if ($scope.isGroupShown(group)) {
-      $scope.shownGroup = null;
-    } else {
-      $scope.shownGroup = group;
-    }
-  };
-
-  $scope.isGroupShown = function(group) {
-    return $scope.shownGroup === group;
+  // SIGN OUT BUTTON
+  $scope.SignOutBtnClick = function() {
+    $auth.signOut()
+      .then(function(resp) {
+        console.log(resp);
+        $state.go('login');
+      })
+      .catch(function(resp) {
+        // handle error response
+      });
   };
 }]);

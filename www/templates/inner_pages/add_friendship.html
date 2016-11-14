@@ -1,29 +1,29 @@
 <ion-view view-title="Find Friend" name="tab-profile-friends-add">
   <ion-content class="padding">
 
-<!-- User Search Bar -->
-  <label class="item item-input">
-    <span class="icon ion-search placeholder-icon"></span>
-    <input type="search" placeholder="Search for User Name">
-  </label>
+  <!-- User Search Bar -->
+    <label class="item item-input">
+      <span class="icon ion-search placeholder-icon"></span>
+      <input type="search" placeholder="Search for User Name">
+    </label>
 
-<!-- User List -->
+  <!-- User List -->
 
-  <ion-list>
-      <ion-item class="row" ng-repeat="user in userList">
+    <ion-list>
+        <ion-item class="row" ng-repeat="user in userList">
 
-      <img class="col col-20 find-user-img" ng-src="{{user.image}}">
-      <div class="col find-user-name">{{user.name}}</div>
-      <div class="col col-20 icon ion-plus-circled"
-              id="add-friend-button"
-              ng-click="addFriend()"></div>
-      </ion-item>
-  </ion-list>
-
+          <img class="col col-20 find-user-img" ng-src="{{user.image}}">
+          <div class="col find-user-name">{{user.name}}</div>
+          <div class="col col-20 icon ion-plus-circled"
+               ng-click="addFriend({{user.id}});
+               userList.splice($index, 1)"></div>
+               <!-- id="{{user.id}}" -->
+        </ion-item>
+    </ion-list>
 
 <!-- Search for Users -->
 
 
-
   </ion-content>
 </ion-view>
+
