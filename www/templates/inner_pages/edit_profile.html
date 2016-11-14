@@ -1,11 +1,13 @@
 <ion-view view-title="Edit Profile" name="tab-profile-edit">
 
+<!-- Add save button to top right header -->
   <ion-nav-buttons side="right">
-    <button ion-button class="ion-checkmark-round" id="save-edit-profile-button" ng-click="updateUserLocation()" type="submit">
-    </button>
+ <!--    <button ion-button id="save-edit-profile-button" ng-click="updateUserInfo()" type="submit">
+    </button> -->
   </ion-nav-buttons>
 
 
+<!-- START OF CONTENT -->
   <ion-content class="padding">
 
 <!-- Profile Image and Name  -->
@@ -15,15 +17,21 @@
 
 <!-- Edit User Location and Bio -->
 
-    <form ng-submit="updateAccount(updateUserProfileForm)" role="form" ng-init="updateUserProfileForm = {location_status: null, bio: null}">
+    <form ng-submit="updateUserInfo(updateUserProfileForm)"
+          role="form">
       <div id="edit-user-location-div">
         <label class="edit-user-location">Your Location </label>
-        <input type="text" name="location_status" ng-model="updateAccount.location_status">
+        <input type="text"
+               name="location_status"
+               ng-model="updateUserProfileForm.location_status">
       </div>
       <div>
         <label class="edit-user-bio">Bio</label>
-        <input type="text" ng-model="updateAccount.bio">
+        <input type="text"
+                ng-model="updateUserProfileForm.bio">
       </div>
+      <button class="ion-checkmark-round"
+              type="submit"> Save </button>
     </form>
 
 

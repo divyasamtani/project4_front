@@ -1,10 +1,10 @@
 app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
   const COUNTRYCOUNT = 32;
   var mapObject;
-
+  $scope.updateUserProfileForm = {};
 
   // EDIT LOCATION AND BIO
-  $scope.updateUserLocation = function () {
+  $scope.updateUserInfo = function () {
     $auth.updateAccount($scope.updateUserProfileForm)
       .then(function(resp){
         console.log(resp);
@@ -14,6 +14,39 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
       });
   };
 
+// METHOD 2
+//  function editUserInfo(){
+//   var newName = $('#editNameInput').val();
+//   var newEmail = $('#editEmailInput').val();
+//   console.log(newName);
+//   console.log(newEmail);
+//   $.auth.updateAccount({
+//     name: newName,
+//     email: newEmail
+//   });
+//   generateProfilePage(newName,newEmail)
+//   $('#viewDetails').show();
+//   $('#editDetails').hide();
+// }
+
+
+// METHOD 3
+  // var updateProfile = function() {
+
+  //   var profileData = {
+  //     location_status:   $scope.location_status,
+  //     bio:      $scope.location_status
+  //   };
+
+  //   $http({
+  //     url: 'http://localhost:3000/api/user/edit',
+  //     method: 'PUT',
+  //     data: profileData
+  //   }).
+  //     then(function(resp){
+  //     console.log(resp);
+  //   });
+  // };
 
   // CREATE MAP
   var generateMap = function () {

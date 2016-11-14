@@ -1,26 +1,34 @@
 <ion-view view-title="My Friends" name="tab-profile-friends">
   <ion-content class="padding">
 
-  <button class="button find-friends" ui-sref=".add">Find Friends</button>
+    <button class="button find-friends" ui-sref=".add">Add New Friend</button>
 
-  <p ng-if="!dataLoaded">You have no friends right now</p>
+    <p ng-if="!dataLoaded">You have no friends right now</p>
 
-<!-- Search User Friends -->
-  <label class="item item-input" ng-if="dataLoaded">
-    <i class="icon ion-search placeholder-icon"></i>
-    <input type="search" placeholder="search friend">
-  </label>
+  <!-- Search User Friends -->
+    <label class="item item-input" ng-if="dataLoaded">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Find Your Friend">
+    </label>
 
 <!-- List User's Friends -->
-  <ion-list ng-if="dataLoaded">
-    <ion-item class="row" ng-repeat="friend in friendslist">
-     <div class="friend-img col col-20" ng-src="{{friend.image}}"></div>
-     <div class="col col-75 friend-name">
-       {{friend.name}}
-     </div>
-    </ion-item>
-  </ion-list>
+    <ion-list ng-if="dataLoaded"
+              show-delete="shouldShowDelete"
+              can-swipe="listCanSwipe">
+      <ion-item class="row" ng-repeat="friend in friendslist">
 
+        <img class="col col-20 friend-img" ng-src="{{friend.image}}">
+        <p class="col col-75 friend-name">{{friend.name}}</p>
 
+    <!-- Delete Button -->
+        <ion-delete-button class="ion-minus-circled"
+                           ng-click="deleteFriend(friend.id)"
+                           data="{{friend.id}}"
+                           ></ion-delete-button>
+
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
+
+<!-- "friendsList.splice($index, 1)" -->
