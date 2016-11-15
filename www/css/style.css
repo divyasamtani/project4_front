@@ -138,7 +138,7 @@ h1{
   height: 100px;
 }
 
-.profile-map, .profile-edit-map {
+.profile-map, .profile-edit-map, .friend-profile-map {
   margin-top: 20px;
   height: 200px;
   border-style: solid 2px;

@@ -6,11 +6,9 @@ app.controller('FriendsCtrl', ['$scope', '$auth', '$state', '$http', function($s
 // GET ALL USERS
   var getAllUsers = function (){
     var url = "http://localhost:3000/api/users";
-
     $http.get(url)
       .success(function(users){
        $scope.userList = users;
-       console.log(users);
       })
       .error(function(data){
         console.log('server side error occured');
@@ -33,7 +31,6 @@ app.controller('FriendsCtrl', ['$scope', '$auth', '$state', '$http', function($s
       console.log(resp);
     };
   };
-
 // GET ALL FRIENDS
   var getUserFriends = function() {
     $http({

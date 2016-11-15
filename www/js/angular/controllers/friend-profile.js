@@ -2,6 +2,7 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
   const COUNTRYCOUNT = 32;
   var mapObject;
   var friendsID = $stateParams.friendsID;
+  $scope.countries = [];
 
 // SHOW FRIEND INFORMATION
   var getFriendInfo = function() {
@@ -9,13 +10,18 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
       url: 'http://localhost:3000/api/users/' + friendsID,
       method: 'GET'
     }).then(function(resp){
-      console.log(resp);
+      console.log(resp.data);
+
+      $scope.friend = resp.data;
+      $scope.friend.countries_visited = resp.data.countries_visited;
+      $scope.friend.world_coverage = resp.data.world_coverage;
+
+      selectCountries(countries, resp.data);
+
     }), function(resp){
       console.log('error');
     };
   };
-
-  getFriendInfo();
 
   // CREATE MAP
   var generateMap = function () {
@@ -37,10 +43,6 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
         countryCode.push($scope.countries[i].country_code);
       }
     }
-
-    $scope.user.countries_visited = countryCode.length;
-    $scope.user.world_coverage    = $scope.user.countries_visited / COUNTRYCOUNT * 100;
-
     return countryCode;
   };
 
@@ -59,61 +61,15 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
         }
       }
     }
-
     updateMap();
   };
 
-  var getUserCountries = function (countries) {
-    $http({
-      url: 'http://localhost:3000/api/users/:id/user_countries',
-      method: 'GET'
-    }).then(function(resp){
-      selectCountries(countries, resp.data);
-    }, function(resp){
-      console.log(resp);
-    });
-  };
-
-  // GET COUNTRY INFO TO CREATE LIST
-  var getCountriesTemplate = function (){
-    var url = "http://localhost:3000/api/countries";
-
-    $http.get(url)
-    .success(function(continents){
-      $scope.continents = continents;
-      $scope.countries = [];
-
-      for (var key in $scope.continents) {
-        $scope.countries.push($scope.continents[key]);
-      }
-
-      $scope.countries = $scope.countries.reduce(function(a, b) {
-        return a.concat(b);
-      }, []);
-
-      getUserCountries($scope.countries);
-    })
-    .error(function(data) {
-      console.log('server side error occurred');
-    });
-  };
 
   var init = function () {
     generateMap();
-    getCountriesTemplate();
+    getFriendInfo();
   };
 
   init();
 
-  // SIGN OUT BUTTON
-  $scope.SignOutBtnClick = function() {
-    $auth.signOut()
-      .then(function(resp) {
-        console.log(resp);
-        $state.go('login');
-      })
-      .catch(function(resp) {
-        // handle error response
-      });
-  };
 }]);
