@@ -1,47 +1,26 @@
 <ion-view view-title="Notes" name="tab-notes">
   <ion-content class="padding">
 
-    <button class="button button-icon new-note"
+<!-- Create Travel Note Button -->
+    <button class="button button-icon ion-compose new-note"
             ui-sref=".create_edit">
-        <i class="icon ion-compose"></i>
     </button>
 
-    <div class="list card" ng-repeat="note in notes">
-      <div class="item item-divider">Note Title {{note.title}}</div>
-      <div class="item item-body">
-        <div>
-          Note content {{note.body}}
-        </div>
-      </div>
-    </div>
 
-    <div class="list card">
-      <div class="item item-divider">Note Title</div>
-      <div class="item item-body">
-        <div>
-          Note content
-        </div>
-      </div>
-    </div>
+<!-- List of Travel Notes -->
+    <ion-list>
+      <div class="list card" ng-repeat="note in notes">
 
-    <div class="list card">
-      <div class="item item-divider">Note Title</div>
-      <div class="item item-body">
-        <div>
-          Note content
+        <div class="item item-divider"
+             ui-sref=".show({notesID: {{note.id}}})">{{note.title}}</div>
+        <div class="item item-body">
+          <div>
+            {{note.body}}
+          </div>
         </div>
-      </div>
-    </div>
 
-  <div class="list card">
-      <div class="item item-divider">Note Title</div>
-      <div class="item item-body">
-        <div>
-          Note content
-        </div>
       </div>
-    </div>
-
+    </ion-list>
 
   </ion-content>
 </ion-view>

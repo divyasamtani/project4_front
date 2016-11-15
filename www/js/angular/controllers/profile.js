@@ -44,7 +44,6 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', function($s
         }
       }
     }
-
     updateMap();
   };
 

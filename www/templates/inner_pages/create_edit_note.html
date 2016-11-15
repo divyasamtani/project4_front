@@ -1,21 +1,45 @@
 <ion-view view-title="Create Travel Note" name="tab-notes-create_edit">
+
+<!-- Save button in top right header -->
+<!--   <ion-nav-buttons side="right">
+    <button class="button button-dark save-note-button"
+            type="submit">
+            Save
+    </button>
+  </ion-nav-buttons>
+ -->
+
   <ion-content class="padding">
 
-<!-- Note title and body -->
-  <div class="list">
-    <label class="item item-input">
-      <input type="text" placeholder="Trip Title">
-    </label>
-    <label class="item item-input travel_note_body">
-      <textarea placeholder="Jot down your travel notes here"></textarea>
-    </label>
-  </div>
+  <!-- Note title and body -->
+    <form ng-submit="createTravelNote()"
+          class="list list-inset"
+          role="form">
 
-<!-- Save Button -->
-<button   class="button button-dark save-note-button"
-          ng-click="saveData()">
-          Save Your Stuff!
-</button>
+<!-- placeholder save button -->
+      <button class="button button-dark save-note-button"
+            type="submit">
+            Save
+      </button>
+
+      <div id="note-title-div">
+        <label class="note-title" for="new-note-title"> Note Title </label>
+        <input type="text"
+               id="new-note-title"
+               placeholder="Trip Title"
+               ng-model="newNote.title">
+      </div>
+
+      <div id="note-body-div">
+        <label class="note-body-title" for="new-note-body"> Note Body </label>
+        <textarea placeholder="Jot down your travel notes here"
+                      ng-model="newNote.body"
+                      id="note-body">
+        <textarea>
+      </div>
+    </form>
+
 
   </ion-content>
 </ion-view>
+

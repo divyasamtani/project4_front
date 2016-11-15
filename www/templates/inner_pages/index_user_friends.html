@@ -16,11 +16,12 @@
       <ion-item class="row" ng-repeat="friendship in friendshipList">
 
         <img class="col col-20 friend-img" ng-src="{{friendship.friend.image}}">
-        <div class="col friend-name">{{friendship.friend.name}}</div>
-        <div class="col col-20 icon ion-ios-close-empty"
+        <div class="col col-50 friend-name"
+             ui-sref=".show({friendsID: {{friendship.id}}})">
+            {{friendship.friend.name}}
+        </div>
+        <div class="col icon ion-ios-close-empty"
             ng-click="deleteFriend({{friendship.id}}); friendshipList.splice($index, 1)"></div>
-        <button class="button see-profile"
-                ui-sref=".show({friendsID: {{friendship.id}}})">See Profile</button>
       </ion-item>
     </ion-list>
   </ion-content>

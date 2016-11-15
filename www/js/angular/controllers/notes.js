@@ -1,27 +1,27 @@
-app.controller('NotesCtrl', ['$scope', '$auth', '$state', function($scope, $auth, $state){
+app.controller('NotesCtrl', ['$scope', '$auth', '$state','$http', function($scope, $auth, $state, $http){
 
   $scope.notes = [];
 
-
-  // Create New Note
-  $scope.createNote = function(task) {
-    $scope.notes.push({
-      title: note.title,
-      body: note.body,
+  // Get all notes
+  var getUserNotes = function () {
+    $http({
+      url: 'http://localhost:3000/api/user/travel_notes',
+      method: 'GET'
+    }).then(function(resp){
+      $scope.notes = resp.data;
+    }, function(resp){
+      console.log(resp);
     });
-    note.title = "";
-    note.body = "";
   };
 
-  // Create New Note
-  $scope.newNote = function() {
-    // redirect to new note page
+  var showTravelNote = function () {
+
   };
 
-  // Save the Note
-  $scope.saveNote= function() {
-    $scope.taskModal.hide();
+  var init = function () {
+    getUserNotes();
   };
 
+  init();
 
 }]);

@@ -60,7 +60,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Home*****************************************************
+// HOME *****************************************************
   .state('tab.home',{
     url: '/home',
     views: {
@@ -71,7 +71,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Search***************************************************
+// SEARCH ***************************************************
   .state('tab.search',{
     url: '/search',
     views: {
@@ -82,18 +82,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Messages***************************************************
-  // .state('tab.messages',{
-  //   url: '/messages',
-  //   views: {
-  //     'tab-messages': {
-  //       templateUrl: "templates/tabs/messages.html",
-  //       controller: 'MessagesCtrl'
-  //     }
-  //   }
-  // })
-
-// NOTES****************************************************
+// NOTES ****************************************************
+// Get all notes
   .state('tab.notes',{
     url: '/notes',
     views: {
@@ -104,24 +94,24 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// // Show one note
-//   .state('tab.notes.show',{
-//     url: '/notes/:id',
-//     views: {
-//       'tab-notes@tab': {
-//         templateUrl: "templates/inner_pages/show_travel_note.html",
-//         // controller: 'ProfileCtrl'
-//       }
-//     }
-//   })
-
 // Create / Edit Note
   .state('tab.notes.create_edit',{
     url: '/create_edit',
     views: {
       'tab-notes@tab': {
         templateUrl: "templates/inner_pages/create_edit_note.html",
-        // controller: 'ProfileCtrl'
+        controller: 'CreateNoteCtrl'
+      }
+    }
+  })
+
+// Show one note
+  .state('tab.notes.show',{
+    url: '/:notesID',
+    views: {
+      'tab-notes@tab': {
+        templateUrl: "templates/inner_pages/show_travel_note.html",
+        controller: 'ShowNoteCtrl'
       }
     }
   })
@@ -188,6 +178,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
       }
     }
   });
+
+// Messages***************************************************
+  // .state('tab.messages',{
+  //   url: '/messages',
+  //   views: {
+  //     'tab-messages': {
+  //       templateUrl: "templates/tabs/messages.html",
+  //       controller: 'MessagesCtrl'
+  //     }
+  //   }
+  // })
+
 
   $urlRouterProvider.otherwise('/');
 }]);
