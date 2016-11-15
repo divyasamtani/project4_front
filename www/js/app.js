@@ -173,7 +173,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     views: {
       'tab-profile@tab': {
         templateUrl: "templates/inner_pages/add_friendship.html",
-        controller: 'FriendsCtrl'
+        controller: 'AddFriendCtrl'
       }
     }
   })

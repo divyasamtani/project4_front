@@ -4,7 +4,10 @@
   <!-- User Search Bar -->
     <label class="item item-input">
       <span class="icon ion-search placeholder-icon"></span>
-      <input type="search" placeholder="Search for User Name">
+      <input  type="search"
+              placeholder="Search for User Name"
+              ng-model="query.text"
+              ng-change=searchUserName()>
     </label>
 
   <!-- User List -->

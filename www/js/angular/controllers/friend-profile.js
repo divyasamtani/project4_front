@@ -5,18 +5,17 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
   $scope.countries = [];
 
 // SHOW FRIEND INFORMATION
-  var getFriendInfo = function() {
+  var getFriendInfo = function(countries) {
     $http({
       url: 'http://localhost:3000/api/users/' + friendsID,
       method: 'GET'
     }).then(function(resp){
-      console.log(resp.data);
-
-      $scope.friend = resp.data;
-      $scope.friend.countries_visited = resp.data.countries_visited;
-      $scope.friend.world_coverage = resp.data.world_coverage;
-
-      selectCountries(countries, resp.data);
+      selectCountries(countries, resp.data.friend_countries);
+      console.log(countries);
+      console.log(resp.data.friend_countries);
+      $scope.friend = resp.data.friend;
+      $scope.friend.countries_visited = resp.data.friend.countries_visited;
+      $scope.friend.world_coverage = resp.data.friend.world_coverage;
 
     }), function(resp){
       console.log('error');
@@ -64,10 +63,36 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
     updateMap();
   };
 
+  // / GETS LIST OF COUNTRIES
+
+  var getCountriesTemplate = function (){
+    var url = "http://localhost:3000/api/countries";
+
+    $http.get(url)
+    .success(function(continents){
+      $scope.continents = continents;
+      $scope.countries = [];
+
+      for (var key in $scope.continents) {
+        $scope.countries.push($scope.continents[key]);
+      }
+
+      $scope.countries = $scope.countries.reduce(function(a, b) {
+        return a.concat(b);
+      }, []);
+
+      getFriendInfo($scope.countries);
+    })
+    .error(function(data) {
+      console.log('server side error occurred');
+    });
+  };
+
 
   var init = function () {
     generateMap();
-    getFriendInfo();
+    // getFriendInfo();
+    getCountriesTemplate ();
   };
 
   init();
