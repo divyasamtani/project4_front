@@ -3,13 +3,22 @@
 
 <!--     <ion-refresher on-refresh="doRefresh()"></ion-refresher> -->
     <ion-list>
-      <ion-item class="user-avatar row" ng-repeat="user in users">
+      <div class="user-avatar row" ng-repeat="friendship in friendshipsList">
 <!--         <img src="{{user.picture.thumbnail}}" /> -->
-        <div class="home-user-img col col-20"></div>
+        <div class="home-user-img col col-20">
+          <img ng-src="{{friendship.friend.image}}"  />
+        </div>
 
-        <div class="user-list-name col col-75">{{user.name}} is in {{user.location}} </div>
-
-      </ion-item>
+        <div class="user-list-name col col-75">
+          <span id="home-user-name">
+            {{friendship.friend.name}}
+          </span>
+            is in
+          <span id="home-user-location">
+            {{friendship.friend.location_status}}
+          </span>
+        </div>
+      </div>
     </ion-list>
 <!--     <ion-infinite-scroll on-infinite="loadMore()" distance="5%"></ion-infinite-scroll>
  -->

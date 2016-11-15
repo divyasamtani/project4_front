@@ -52,15 +52,22 @@ h1{
 
 /************** HOME FEED & SEARCH ***************/
 
-.home-user-img {
+/*.home-user-img {
   background-color: gray;
   height: 70px;
   margin-top: 3px;
-}
+}*/
 
 .user-list-name {
-  padding-top: 25px;
-  margin-left: 20px;
+  padding-top: 20px;
+}
+
+#home-user-name {
+  font-weight: bold;
+}
+
+#home-user-location {
+  font-weight: italic;
 }
 
 .user-avatar {
@@ -70,7 +77,6 @@ h1{
 #country-search-header {
   margin-bottom: 20px;
   padding: 10px;
-  background-color: gray;
 }
 
 /********************** NOTES **********************/

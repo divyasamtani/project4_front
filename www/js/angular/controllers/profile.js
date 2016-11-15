@@ -24,7 +24,7 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', function($s
     }
 
     $scope.user.countries_visited = countryCode.length;
-    $scope.user.world_coverage    = $scope.user.countries_visited / COUNTRYCOUNT * 100;
+    $scope.user.world_coverage    = Math.round($scope.user.countries_visited / COUNTRYCOUNT * 100);
 
     return countryCode;
   };

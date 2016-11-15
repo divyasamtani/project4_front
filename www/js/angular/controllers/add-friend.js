@@ -1,4 +1,5 @@
 app.controller('AddFriendCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+
   $scope.query = {
     text: ""
   };

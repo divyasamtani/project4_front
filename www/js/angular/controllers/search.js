@@ -1,10 +1,19 @@
-app.controller('SearchCtrl', ['$scope', '$auth', '$state', function($scope, $auth, $state){
+app.controller('SearchCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
 
-    $scope.friendslist = [
-  {'id':1 , 'name' : 'ABC1'},
-  {'id':2 , 'name' : 'ABC2'},
-  {'id':3 , 'name' : 'ABC3'},
-  {'id':4 , 'name' : 'ABC4'},
-  ];
+  $scope.query = {
+    text: ""
+  };
+
+// SEARCH FRIENDS USING COUNTRY NAME
+  $scope.searchFriendsUsingCountry = function() {
+    $http({
+      url: "http://localhost:3000/api/friend_country_search/?name=" + $scope.query.text,
+      method: 'GET',
+    }).then(function(resp){
+      $scope.friendsList = resp.data;
+    }, function(resp){
+      console.log(resp);
+    });
+  };
 
 }]);

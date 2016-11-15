@@ -11,11 +11,10 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
       method: 'GET'
     }).then(function(resp){
       selectCountries(countries, resp.data.friend_countries);
-      console.log(countries);
-      console.log(resp.data.friend_countries);
+
       $scope.friend = resp.data.friend;
       $scope.friend.countries_visited = resp.data.friend.countries_visited;
-      $scope.friend.world_coverage = resp.data.friend.world_coverage;
+      $scope.friend.world_coverage = Math.round(resp.data.friend.world_coverage);
 
     }), function(resp){
       console.log('error');

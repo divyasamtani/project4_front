@@ -14,14 +14,13 @@
 
     <ion-list>
         <ion-item class="row" ng-repeat="user in userList">
-         <!-- ng-if="user == !current_user.friend && user == !current_user" -->
 
           <img class="col col-20 find-user-img" ng-src="{{user.image}}">
           <div class="col find-user-name">{{user.name}}</div>
+
           <div class="col col-20 icon ion-plus-circled"
-               ng-click="addFriend({{user.id}});
-               userList.splice($index, 1)"></div>
-               <!-- id="{{user.id}}" -->
+               ng-click="addFriend({{user.id}}); userList.splice($index, 1)"></div>
+
         </ion-item>
     </ion-list>
 
