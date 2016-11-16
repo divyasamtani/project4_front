@@ -1,24 +1,28 @@
-<ion-view view-title="Notes" name="tab-notes">
+<ion-view view-title="Notes" name="notes">
   <ion-content class="padding">
 
 <!-- Create Travel Note Button -->
     <button class="button button-icon ion-compose new-note"
-            ui-sref=".create_edit">
+            ui-sref="notes.create">
     </button>
 
 
 <!-- List of Travel Notes -->
     <ion-list>
-      <div class="list card" ng-repeat="note in notes">
+      <div class="list card" ng-repeat="note in notes track by $index">
 
         <div class="item item-divider"
-             ui-sref=".show({notesID: {{note.id}}})">{{note.title}}</div>
-        <div class="item item-body">
-          <div>
+             ui-sref="notes.show({noteID: {{note.id}}})">
+            {{note.title}}
+        </div>
+        <div class="item item-body row">
+          <div id="travel-note-body"
+               class="col col-90">
             {{note.body}}
           </div>
+          <div ng-click="deleteTravelNote($index)"
+               class="icon ion-ios-close-empty col col-10"></div>
         </div>
-
       </div>
     </ion-list>
 

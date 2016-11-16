@@ -83,9 +83,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
   })
 
 // NOTES ****************************************************
-// Get all notes
+// See All Notes
   .state('tab.notes',{
     url: '/notes',
+    cache: false,
     views: {
       'tab-notes': {
         templateUrl: "templates/tabs/notes.html",
@@ -94,24 +95,34 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-// Create / Edit Note
-  .state('tab.notes.create_edit',{
-    url: '/create_edit',
+// See All Notes (Doesn't inherit from Tab)
+  .state('notes',{
+    url: '/notes',
+    cache: false,
+    abstract: true,
+    templateUrl: "templates/inner_pages/notes-notab.html"
+  })
+
+// Create Note
+  .state('notes.create',{
+    url: '/create',
+    cache: false,
     views: {
-      'tab-notes@tab': {
-        templateUrl: "templates/inner_pages/create_edit_note.html",
+      'notes-view@notes': {
+        templateUrl: "templates/inner_pages/create_note.html",
         controller: 'CreateNoteCtrl'
       }
     }
   })
 
-// Show one note
-  .state('tab.notes.show',{
-    url: '/:notesID',
+// Edit Note
+  .state('notes.show',{
+    url: '/:noteID',
+    cache: false,
     views: {
-      'tab-notes@tab': {
-        templateUrl: "templates/inner_pages/show_travel_note.html",
-        controller: 'ShowNoteCtrl'
+      'notes-view@notes': {
+        templateUrl: "templates/inner_pages/edit_note.html",
+        controller: 'EditNoteCtrl'
       }
     }
   })

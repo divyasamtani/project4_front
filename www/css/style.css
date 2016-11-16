@@ -257,8 +257,14 @@ h1{
   margin-top: 20px;
 }
 
-.note-body-title{
+#travel-note-body {
+  padding: 10px;
+  padding-left: 5px;
+}
 
+.edit-note-title{
+  font-weight: bold;
+  font-size: 30px;
 }
 
 #note-body {

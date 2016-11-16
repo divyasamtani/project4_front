@@ -1,0 +1,41 @@
+<ion-view view-title="{{note.title}}" name="notes-notab-edit">
+
+  <!-- Cancel & Save buttons in header -->
+  <ion-nav-buttons side="left">
+    <div    class="button icon ion-ios-arrow-back"
+            ui-sref="tab.notes">
+    </div>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-dark save-note-button"
+            ng-click="editTravelNote()">
+      Save
+    </button>
+  </ion-nav-buttons>
+
+
+  <!-- Show / Edit Travel Note Form  -->
+  <ion-content class="padding">
+    <form ng-submit="updateTravelNote()"
+              class="list list-inset"
+              role="form">
+
+  <!-- First Row -->
+      <div class="row">
+      <!-- Header -->
+        <input  type="text"
+                class="edit-note-title col col-80"
+                ng-model="note.title"
+                id="edit-note-header">
+        </div>
+
+  <!-- Second Row -->
+      <div class="row">
+        <textarea id="edit-note-body"
+                  ng-model="note.body">
+        </textarea>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
