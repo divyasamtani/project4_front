@@ -1,9 +1,15 @@
-<ion-view view-title="Edit Profile" name="tab-profile-edit">
+<ion-view view-title="Edit Profile" name="profile-notab-edit">
 
-<!-- Add save button to top right header -->
+<!-- Nav Buttons -->
+  <ion-nav-buttons side="left">
+    <div    class="button icon ion-ios-arrow-back"
+            ui-sref="tab.profile">
+    </div>
+  </ion-nav-buttons>
   <ion-nav-buttons side="right">
- <!--    <button ion-button id="save-edit-profile-button" ng-click="updateUserInfo()" type="submit">
-    </button> -->
+    <div class="ion-checkmark-round"
+         ng-click="updateUserInfo(user)">
+    </div>
   </ion-nav-buttons>
 
 
@@ -17,34 +23,62 @@
 
 <!-- Edit User Location and Bio -->
 
-    <form ng-submit="updateUserInfo(updateUserProfileForm)"
-          role="form">
-      <div id="edit-user-location-div">
-        <label class="edit-user-location">Your Location </label>
-        <input type="text"
-               name="location_status"
-               ng-model="updateUserProfileForm.location_status">
+    <div id="edit-user-location-and-bio-wrapper">
+      <div class="row">
+        <div id="edit-user-location-div"
+           class="col col-80">
+          <label class="edit-user-location">Your Location </label>
+          <input type="text"
+                 name="location_status"
+                 placeholder="Where are you now?"
+                 ng-model="user.location_status">
+        </div>
       </div>
-      <div>
-        <label class="edit-user-bio">Bio</label>
-        <input type="text"
-                ng-model="updateUserProfileForm.bio">
+
+
+      <div id="edit-user-bio-wrapper">
+        <div class="row">
+          <label class="edit-user-bio-label">Bio</label>
+        </div>
+        <div class="row">
+          <textarea id="edit-user-bio-text"
+                    placeholder="{{user.bio}}"
+                    ng-model="user.bio">
+          </textarea>
+        </div>
       </div>
-      <button class="ion-checkmark-round"
-              type="submit"> Save </button>
-    </form>
+
+    </div>
 
 
 <!-- **********************  Edit User Stats ********************* -->
 
-    <div class="row edit-user-stats">
-      <div class="col">
-        # Countries Visited - {{user.countries_visited}}
+    <div id="edit-user-stats-wrapper">
+      <div class="row edit-user-stat-labels">
+        <div class="col">
+          # Countries
+        </div>
+        <div class="col">
+          World Coverage
+        </div>
+        <div class="col">
+          Travel Status
+        </div>
       </div>
-      <div class="col">
-        World Coverage - {{user.world_coverage}} %
+
+      <div class="row edit-user-stats">
+        <div class="col">
+          {{user.countries_visited}}
+        </div>
+        <div class="col">
+          {{user.world_coverage}} %
+        </div>
+        <div class="col">
+          {{user.travel_status}}
+        </div>
       </div>
     </div>
+
 
 <!-- ******************** User Map *************************** -->
     <div class="row profile-edit-map">

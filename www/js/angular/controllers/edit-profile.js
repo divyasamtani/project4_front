@@ -1,11 +1,13 @@
 app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
   const COUNTRYCOUNT = 32;
   var mapObject;
-  $scope.updateUserProfileForm = {};
+  $scope.editProfile = {};
+  // $ionicNavBarDelegate.showBackButton(true);
+
 
   // EDIT LOCATION AND BIO
-  $scope.updateUserInfo = function () {
-    $auth.updateAccount($scope.updateUserProfileForm)
+  $scope.updateUserInfo = function (user) {
+    $auth.updateAccount(user)
       .then(function(resp){
         console.log(resp);
       })
@@ -27,6 +29,25 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
     }).vectorMap('get', 'mapObject');
   };
 
+  var updateTravelStatus = function () {
+
+    if($scope.user.world_coverage <= 10){
+      $scope.user.travel_status  = 'Noob';
+    }
+    if($scope.user.world_coverage >= 11 && $scope.user.world_coverage <= 20){
+      $scope.user.travel_status = 'Well-Travelled';
+    }
+    if($scope.user.world_coverage >= 21 && $scope.user.world_coverage <= 40){
+      $scope.user.travel_status = 'Global Traveller';
+    }
+    if($scope.user.world_coverage >= 41 && $scope.user.world_coverage <= 60){
+      $scope.user.travel_status = 'World Expert';
+    }
+    if($scope.user.world_coverage >= 61 && $scope.user.world_coverage<= 100){
+      $scope.user.travel_status = 'Travel Warrior';
+    }
+  };
+
   var extractCountryCode = function () {
     var countryCode = [];
     for (var i = 0; i < $scope.countries.length; i++) {
@@ -38,6 +59,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', functio
     $scope.user.countries_visited = countryCode.length;
     $scope.user.world_coverage    = Math.round($scope.user.countries_visited / COUNTRYCOUNT * 100);
 
+    updateTravelStatus();
     return countryCode;
   };
 

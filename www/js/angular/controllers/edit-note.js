@@ -1,6 +1,8 @@
 app.controller('EditNoteCtrl', ['$scope', '$auth', '$state','$http', '$stateParams', 'NoteService', function($scope, $auth, $state, $http, $stateParams, NoteService){
 
   var noteID = $stateParams.noteID;
+  $scope.bodyHeight = window.innerHeight - $('ion-header-bar').height() - 100;
+  console.log($scope.bodyHeight);
   $scope.note = {};
 
   // SHOW TRAVEL NOTE USING PARAMS ID

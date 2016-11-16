@@ -127,7 +127,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
-
 // PROFILE***********************************************
 
   .state('tab.profile',{
@@ -141,26 +140,33 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
     }
   })
 
+// Profile (Doesn't inherit from Tab)
+  .state('profile',{
+    url: '/profile',
+    cache: false,
+    abstract: true,
+    templateUrl: "templates/inner_pages/profile-notab.html"
+  })
+
+
 // Edit Profile (Child of Profile)
-  .state('tab.profile.edit',{
+  .state('profile.edit',{
     url: '/edit',
     cache: false,
     views: {
-      'tab-profile@tab': {
+      'profile-view@profile': {
         templateUrl: "templates/inner_pages/edit_profile.html",
         controller: 'EditProfileCtrl'
       }
     }
   })
 
-// FRIENDS**********************************************
-
 // See All Friends (Child of Profile)
-  .state('tab.profile.friends',{
+  .state('profile.friends',{
     url: '/friends',
     cache: false,
     views: {
-      'tab-profile@tab': {
+      'profile-view@profile': {
         templateUrl: "templates/inner_pages/index_user_friends.html",
         controller: 'FriendsCtrl'
       }
@@ -168,11 +174,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
   })
 
 // Search Users to Find Friend
-  .state('tab.profile.friends.add',{
+  .state('profile.friends.add',{
     url: '/add',
     cache: false,
     views: {
-      'tab-profile@tab': {
+      'profile-view@profile': {
         templateUrl: "templates/inner_pages/add_friendship.html",
         controller: 'AddFriendCtrl'
       }
@@ -180,27 +186,15 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
   })
 
 // Show Friend's Profile
-  .state('tab.profile.friends.show',{
+  .state('profile.friends.show',{
     url: '/:friendsID',
     views: {
-      'tab-profile@tab': {
+      'profile-view@profile': {
         templateUrl: "templates/inner_pages/friend-profile.html",
         controller: 'FriendProfileCtrl'
       }
     }
   });
-
-// Messages***************************************************
-  // .state('tab.messages',{
-  //   url: '/messages',
-  //   views: {
-  //     'tab-messages': {
-  //       templateUrl: "templates/tabs/messages.html",
-  //       controller: 'MessagesCtrl'
-  //     }
-  //   }
-  // })
-
 
   $urlRouterProvider.otherwise('/');
 }]);

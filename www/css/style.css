@@ -111,8 +111,10 @@ h1{
 }
 
 #profile-img-div img {
-   display: block;
-   width: 100%;
+  display: block;
+  width: 100%;
+  padding:1px;
+  border:1px solid #021a40;
 }
 
 .travel-stat-label {
@@ -144,15 +146,20 @@ h1{
   height: 100px;
 }
 
+.current-location {
+  margin-top: 5px;
+}
+
+#current-location-status{
+  font-weight: bold;
+}
+
 .profile-map, .profile-edit-map, .friend-profile-map {
   margin-top: 20px;
   height: 200px;
   border-style: solid 2px;
 }
 
-#profile-button-section {
-  margin-top: 20px;
-}
 
 .profile-buttons {
   display: block;
@@ -167,6 +174,8 @@ h1{
   display: block;
   margin: auto;
   width: 23%;
+  padding:1px;
+  border:1px solid #021a40;
 }
 
 #edit-profile-username {
@@ -177,30 +186,49 @@ h1{
   font-weight: bold;
 }
 
+#edit-user-location-and-bio-wrapper {
+  border: 1px solid;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .edit-user-location {
   margin: auto;
   width: 100%;
   font-size: 16px;
 }
 
-#edit-user-location-div {
-  margin-top: 20px;
-}
-
-.edit-user-bio {
+.edit-user-bio-label {
   margin: auto;
   width: 100%;
   font-size: 16px;
   display: block;
 }
 
+#edit-user-bio-text {
+  width: 100%;
+}
+
+#edit-user-stats-wrapper{
+  border: 1px solid;
+}
+
+.edit-user-stat-labels{
+  height: 30px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
 .edit-user-stats{
   height: 30px;
-  margin: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .add-countries {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .item-accordion {
@@ -209,6 +237,10 @@ h1{
 
 #save-edit-profile-button {
   font-size: 20px;
+}
+
+#edit-user-bio-wrapper{
+  margin-left: 5px;
 }
 
 
@@ -267,6 +299,14 @@ h1{
   font-size: 30px;
 }
 
+/*#edit-note-body-div {
+  height: 300px;
+}*/
+
+#edit-note-body{
+  width: 100%;
+}
+
 #note-body {
   border-style: solid 2px;
   width: 100%;
@@ -290,4 +330,9 @@ h1{
   font-size: 55px;
   margin: 0 auto;
   display: block;
+}
+
+.ion-checkmark-round {
+  font-size: 25px;
+  padding: 5px;
 }

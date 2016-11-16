@@ -9,15 +9,24 @@
       <div class="col profile-stats">
         <div class="row">
           <div class="col col-75 travel-stat-label"> # Countries Visited </div>
-           <div class="col travel-stat-number"> {{user.countries_visited}} </div>
+          <div class="col travel-stat-number"> {{user.countries_visited}} </div>
         </div>
         <div class="row">
           <div class="col col-75 travel-stat-label"> World Coverage </div>
-           <div class="col travel-stat-number"> {{user.world_coverage}} %</div>
+          <div class="col travel-stat-number"> {{user.world_coverage}} %</div>
         </div>
         <div class="row">
-          <div class="col col-100 travel-stat-label"> Current Location is ...  {{user.location_status}} </div>
+          <div class="col col-100 travel-stat-label"> Travel Status: {{user.travel_status}} </div>
         </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col col-100 current-location"> I'm in
+        <span id='current-location-status'>
+          {{user.location_status}} !
+        </span>
       </div>
     </div>
 
@@ -30,11 +39,11 @@
                   Sign out
         </button>
         <button   class="button button-dark profile-button"
-                  ui-sref=".edit">
+                  ui-sref="profile.edit">
                   Edit Profile
         </button>
         <button   class="button button-dark profile-button"
-                  ui-sref=".friends">
+                  ui-sref="profile.friends">
                   See Friends
         </button>
       </div>
