@@ -1,4 +1,4 @@
-var app = angular.module('project4', ['ionic', 'ui.router', 'ng-token-auth', 'ngResource'])
+var app = angular.module('project4', ['ionic', 'ui.router', 'ng-token-auth', 'ngResource', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -20,7 +20,7 @@ var app = angular.module('project4', ['ionic', 'ui.router', 'ng-token-auth', 'ng
 
 // App.config
 
-app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($stateProvider, $urlRouterProvider, $authProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $authProvider, $ionicConfigProvider) {
 
   // Configure Auth Provider
   $authProvider.configure({
@@ -59,6 +59,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
       }
     }
   })
+
 
 // HOME *****************************************************
   .state('tab.home',{
@@ -131,7 +132,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
 
   .state('tab.profile',{
     url: '/profile',
-    cache: false,
+    cache: true,
     views: {
       'tab-profile': {
         templateUrl: "templates/tabs/profile.html",
@@ -195,6 +196,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
       }
     }
   });
+
+  $ionicConfigProvider.tabs.position('bottom');
 
   $urlRouterProvider.otherwise('/');
 }]);

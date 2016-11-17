@@ -1,9 +1,14 @@
-app.controller('EditNoteCtrl', ['$scope', '$auth', '$state','$http', '$stateParams', 'NoteService', function($scope, $auth, $state, $http, $stateParams, NoteService){
+app.controller('EditNoteCtrl', ['$scope', '$auth', '$state','$http', '$stateParams', 'NoteService', '$cordovaSocialSharing', function($scope, $auth, $state, $http, $stateParams, NoteService, $cordovaSocialSharing){
 
   var noteID = $stateParams.noteID;
   $scope.bodyHeight = window.innerHeight - $('ion-header-bar').height() - 100;
   console.log($scope.bodyHeight);
   $scope.note = {};
+
+  $scope.shareNote = function () {
+    console.log('hello');
+    $cordovaSocialSharing.share('General share Message', null, null, null);
+  };
 
   // SHOW TRAVEL NOTE USING PARAMS ID
   var getTravelNoteInfo = function () {

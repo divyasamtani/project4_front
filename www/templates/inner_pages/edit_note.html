@@ -8,14 +8,19 @@
   </ion-nav-buttons>
 
   <ion-nav-buttons side="right">
+
     <button class="icon ion-checkmark-round"
             ng-click="editTravelNote()">
     </button>
   </ion-nav-buttons>
 
 
+
   <!-- Show / Edit Travel Note Form  -->
   <ion-content class="padding">
+     <button class="button"
+             ng-click="shareNote()"> Share Note
+     </button>
     <form ng-submit="updateTravelNote()"
               class="list list-inset"
               role="form">

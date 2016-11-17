@@ -1,8 +1,7 @@
-app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', '$cordovaSocialSharing', function($scope, $auth, $state, $http, $cordovaSocialSharing){
   const COUNTRYCOUNT = 176;
   var mapObject;
   $scope.editProfile = {};
-
 
   // EDIT LOCATION AND BIO
   $scope.updateUserInfo = function (user) {
