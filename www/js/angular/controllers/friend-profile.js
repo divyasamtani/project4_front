@@ -1,4 +1,4 @@
-app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$stateParams', function($scope, $auth, $state, $http, $stateParams){
+app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$stateParams', 'urlConstant', function($scope, $auth, $state, $http, $stateParams, urlConstant){
   const COUNTRYCOUNT = 32;
   var mapObject;
   var friendsID = $stateParams.friendsID;
@@ -7,7 +7,7 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
 // SHOW FRIEND INFORMATION
   var getFriendInfo = function(countries) {
     $http({
-      url: 'http://localhost:3000/api/users/' + friendsID,
+      url: urlConstant.apiUrl + '/api/users/' + friendsID,
       method: 'GET'
     }).then(function(resp){
       selectCountries(countries, resp.data.friend_countries);
@@ -65,7 +65,7 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
   // / GETS LIST OF COUNTRIES
 
   var getCountriesTemplate = function (){
-    var url = "http://localhost:3000/api/countries";
+    var url = urlConstant.apiUrl + "/api/countries";
 
     $http.get(url)
     .success(function(continents){

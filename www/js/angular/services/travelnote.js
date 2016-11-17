@@ -1,5 +1,5 @@
-app.service('NoteService', ['$resource', function($resource){
-  this.resource = $resource('http://localhost:3000/user/travel_notes/:id', {
+app.service('NoteService', ['$resource', 'urlConstant', function($resource, urlConstant){
+  this.resource = $resource(urlConstant.apiUrl + '/user/travel_notes/:id', {
     id: '@id'
   }, {
     'update': {method:'PUT'},

@@ -20,15 +20,15 @@ var app = angular.module('project4', ['ionic', 'ui.router', 'ng-token-auth', 'ng
 
 // App.config
 
-app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $authProvider, $ionicConfigProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConfigProvider', 'urlConstant', function($stateProvider, $urlRouterProvider, $authProvider, $ionicConfigProvider, urlConstant) {
 
   // Configure Auth Provider
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000',
+    apiUrl: urlConstant.apiUrl,
     authProviderPaths: {
       facebook: '/auth/facebook'
     },
-    omniauthWindowType: 'newWindow',
+    omniauthWindowType: navigator.platform == 'MacIntel' ? 'newWindow' : 'inAppBrowser',
     storage: 'localStorage'
   });
 

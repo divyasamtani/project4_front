@@ -1,4 +1,4 @@
-app.controller('AddFriendCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+app.controller('AddFriendCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant', function($scope, $auth, $state, $http, urlConstant){
 
   $scope.query = {
     text: ""
@@ -7,7 +7,7 @@ app.controller('AddFriendCtrl', ['$scope', '$auth', '$state', '$http', function(
 // USER NAME SEARCH QUERY
   $scope.searchUserName = function(){
     $http({
-      url: "http://localhost:3000/api/user_search/?name=" + $scope.query.text,
+      url: urlConstant.apiUrl + "/api/user_search/?name=" + $scope.query.text,
       method: 'GET',
     }).then(function(resp){
       $scope.userList = resp.data;
@@ -22,7 +22,7 @@ app.controller('AddFriendCtrl', ['$scope', '$auth', '$state', '$http', function(
     console.log(userid);
 
     $http({
-      url: 'http://localhost:3000/api/user/friendships',
+      url: urlConstant.apiUrl + '/api/user/friendships',
       method: 'POST',
       data: {friendship: friendParam},
       responseType:'json',

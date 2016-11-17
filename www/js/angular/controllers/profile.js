@@ -1,4 +1,4 @@
-app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant', function($scope, $auth, $state, $http, urlConstant){
   const COUNTRYCOUNT = 176;
   var mapObject;
 
@@ -70,7 +70,7 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', function($s
 
   var getUserCountries = function (countries) {
     $http({
-      url: 'http://localhost:3000/api/user/user_countries',
+      url: urlConstant.apiUrl + '/api/user/user_countries',
       method: 'GET'
     }).then(function(resp){
       selectCountries(countries, resp.data);
@@ -81,7 +81,7 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', function($s
 
   // GET COUNTRY INFO TO CREATE LIST
   var getCountriesTemplate = function (){
-    var url = "http://localhost:3000/api/countries";
+    var url = urlConstant.apiUrl + "/api/countries";
 
     $http.get(url)
     .success(function(continents){

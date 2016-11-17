@@ -1,4 +1,4 @@
-app.controller('NotesCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+app.controller('NotesCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant', function($scope, $auth, $state, $http, urlConstant){
 
   $scope.notes = [];
   $scope.note = {};
@@ -6,7 +6,7 @@ app.controller('NotesCtrl', ['$scope', '$auth', '$state', '$http', function($sco
 // GET ALL TRAVEL NOTES
   var getUserNotes = function(){
     $http({
-      url: 'http://localhost:3000/api/user/travel_notes',
+      url: urlConstant.apiUrl + '/api/user/travel_notes',
       method: 'GET'
     }).then(function(resp){
       $scope.notes = resp.data;
@@ -19,7 +19,7 @@ app.controller('NotesCtrl', ['$scope', '$auth', '$state', '$http', function($sco
   $scope.deleteTravelNote = function(index){
     var note = $scope.notes[index];
     $http({
-      url: 'http://localhost:3000/api/user/travel_notes/' + note.id,
+      url: urlConstant.apiUrl + '/api/user/travel_notes/' + note.id,
       method: 'DELETE'
     }).then(function(){
       $scope.notes.splice(index, 1);

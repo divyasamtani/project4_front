@@ -1,8 +1,8 @@
-app.controller('HomeCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+app.controller('HomeCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant', function($scope, $auth, $state, $http, urlConstant){
 
   var getUserFriends = function() {
     $http({
-      url: 'http://localhost:3000/api/user/friendships',
+      url: urlConstant.apiUrl + '/api/user/friendships',
       method: 'GET',
     }).then(function(resp){
       $scope.friendshipsList = resp.data;

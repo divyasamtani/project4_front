@@ -1,4 +1,4 @@
-app.controller('CreateNoteCtrl', ['$scope', '$auth', '$state','$http', function($scope, $auth, $state, $http){
+app.controller('CreateNoteCtrl', ['$scope', '$auth', '$state','$http', 'urlConstant', function($scope, $auth, $state, $http, urlConstant){
 
   $scope.newNote = {};
   $scope.notes = [];
@@ -6,7 +6,7 @@ app.controller('CreateNoteCtrl', ['$scope', '$auth', '$state','$http', function(
   // Create New Note
   $scope.createTravelNote = function() {
     $http({
-       url: 'http://localhost:3000/api/user/travel_notes',
+       url: urlConstant.apiUrl + '/api/user/travel_notes',
         method: 'POST',
        data: $scope.newNote
      }).then(function(resp){

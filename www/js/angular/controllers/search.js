@@ -1,4 +1,4 @@
-app.controller('SearchCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+app.controller('SearchCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant', function($scope, $auth, $state, $http, urlConstant){
 
   $scope.query = {
     text: ""
@@ -7,7 +7,7 @@ app.controller('SearchCtrl', ['$scope', '$auth', '$state', '$http', function($sc
 // SEARCH FRIENDS USING COUNTRY NAME
   $scope.searchFriendsUsingCountry = function() {
     $http({
-      url: "http://localhost:3000/api/friend_country_search/?name=" + $scope.query.text,
+      url: urlConstant.apiUrl + "/api/friend_country_search/?name=" + $scope.query.text,
       method: 'GET',
     }).then(function(resp){
       $scope.friendsList = resp.data;

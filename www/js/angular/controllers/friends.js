@@ -1,10 +1,10 @@
-app.controller('FriendsCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
+app.controller('FriendsCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant', function($scope, $auth, $state, $http, urlConstant){
   $scope.friendsList = {};
 
 // GET ALL FRIENDS
   var getUserFriends = function() {
     $http({
-      url: 'http://localhost:3000/api/user/friendships',
+      url: urlConstant.apiUrl + '/api/user/friendships',
       method: 'GET',
     }).then(function(resp){
       $scope.friendshipList = resp.data;
@@ -18,7 +18,7 @@ app.controller('FriendsCtrl', ['$scope', '$auth', '$state', '$http', function($s
   $scope.deleteFriend = function(friendID) {
     console.log(friendID);
     $http({
-      url: 'http://localhost:3000/api/user/friendships/' + friendID,
+      url: urlConstant.apiUrl + '/api/user/friendships/' + friendID,
       method: 'DELETE'
     }).then(function(){
       console.log('friendship deleted');

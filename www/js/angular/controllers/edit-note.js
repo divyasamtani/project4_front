@@ -1,4 +1,4 @@
-app.controller('EditNoteCtrl', ['$scope', '$auth', '$state','$http', '$stateParams', 'NoteService', '$cordovaSocialSharing', function($scope, $auth, $state, $http, $stateParams, NoteService, $cordovaSocialSharing){
+app.controller('EditNoteCtrl', ['$scope', '$auth', '$state','$http', '$stateParams', 'NoteService', '$cordovaSocialSharing', 'urlConstant', function($scope, $auth, $state, $http, $stateParams, NoteService, $cordovaSocialSharing, urlConstant){
 
   var noteID = $stateParams.noteID;
   $scope.bodyHeight = window.innerHeight - $('ion-header-bar').height() - 100;
@@ -13,7 +13,7 @@ app.controller('EditNoteCtrl', ['$scope', '$auth', '$state','$http', '$statePara
   // SHOW TRAVEL NOTE USING PARAMS ID
   var getTravelNoteInfo = function () {
     $http({
-      url: 'http://localhost:3000/api/user/travel_notes/' + noteID,
+      url: urlConstant.apiUrl + '/api/user/travel_notes/' + noteID,
       method: 'GET'
   }).then(function(resp){
       $scope.note = resp.data;
@@ -32,7 +32,7 @@ app.controller('EditNoteCtrl', ['$scope', '$auth', '$state','$http', '$statePara
     };
 
     $http({
-      url: 'http://localhost:3000/api/user/travel_notes/' + noteID,
+      url: urlConstant.apiUrl + '/api/user/travel_notes/' + noteID,
       method: 'PUT',
       data: $scope.note
     }).then(function(){

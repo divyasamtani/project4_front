@@ -1,4 +1,4 @@
-app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', '$cordovaSocialSharing', function($scope, $auth, $state, $http, $cordovaSocialSharing){
+app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', '$cordovaSocialSharing', 'urlConstant', function($scope, $auth, $state, $http, $cordovaSocialSharing, urlConstant){
   const COUNTRYCOUNT = 176;
   var mapObject;
   $scope.editProfile = {};
@@ -82,7 +82,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', '$cordo
 
   var getUserCountries = function (countries) {
     $http({
-      url: 'http://localhost:3000/api/user/user_countries',
+      url: urlConstant.apiUrl + '/api/user/user_countries',
       method: 'GET'
     }).then(function(resp){
       selectCountries(countries, resp.data);
@@ -93,7 +93,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', '$cordo
 
   // GET COUNTRY INFO TO CREATE LIST
   var getCountriesTemplate = function (){
-    var url = "http://localhost:3000/api/countries";
+    var url = urlConstant.apiUrl + "/api/countries";
 
     $http.get(url)
     .success(function(continents){
@@ -126,7 +126,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', '$cordo
 
   var createUserCountry = function (country, countryID) {
     $http({
-      url: 'http://localhost:3000/api/user/user_countries',
+      url: urlConstant.apiUrl + '/api/user/user_countries',
       method: 'POST',
       data: {
         user_country: {
@@ -143,7 +143,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', '$cordo
 
   var destroyUserCountry = function (country, userCountryID) {
     $http({
-      url: 'http://localhost:3000/api/user/user_countries/' + userCountryID,
+      url: urlConstant.apiUrl + '/api/user/user_countries/' + userCountryID,
       method: 'DELETE'
     }).then(function(resp){
       delete country.userCountryID;

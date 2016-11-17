@@ -18,8 +18,10 @@
     <ion-item class="row" ng-repeat="friend in friendsList">
 
       <img class="col col-20 find-user-img" ng-src="{{friend.image}}">
-      <div class="col find-user-name">{{friend.name}}</div>
-
+      <div class="col find-user-name"
+           ui-sref="profile.friends.show({friendsID: {{friend.id}}})"
+            >{{friend.name}}
+      </div>
     </ion-item>
   </ion-list>
 
