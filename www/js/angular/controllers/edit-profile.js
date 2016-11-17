@@ -1,8 +1,7 @@
 app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
-  const COUNTRYCOUNT = 32;
+  const COUNTRYCOUNT = 176;
   var mapObject;
   $scope.editProfile = {};
-  // $ionicNavBarDelegate.showBackButton(true);
 
 
   // EDIT LOCATION AND BIO

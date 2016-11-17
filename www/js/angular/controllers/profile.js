@@ -1,5 +1,5 @@
 app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', function($scope, $auth, $state, $http){
-  const COUNTRYCOUNT = 32;
+  const COUNTRYCOUNT = 176;
   var mapObject;
 
   // CREATE MAP

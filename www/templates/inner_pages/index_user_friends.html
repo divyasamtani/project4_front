@@ -1,9 +1,17 @@
 <ion-view view-title="My Friends" name="profile-notab-friends">
+
+
+<!-- Nav Buttons -->
+  <ion-nav-buttons side="left">
+    <div    class="button icon ion-ios-arrow-back"
+            ui-sref="tab.profile">
+    </div>
+  </ion-nav-buttons>
+
   <ion-content class="padding">
 
 <!-- Find New Friends Button -->
     <button class="button find-friends" ui-sref="profile.friends.add">Find Friends</button>
-
 
   <!-- Search for User Friend -->
     <label class="item item-input" ng-if="dataLoaded">

@@ -186,16 +186,20 @@ h1{
   font-weight: bold;
 }
 
-#edit-user-location-and-bio-wrapper {
+#edit-user-status-and-bio-wrapper {
   border: 1px solid;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.edit-user-location {
-  margin: auto;
+.edit-user-status-label {
   width: 100%;
   font-size: 16px;
+}
+
+#edit-user-status {
+  width: 100%;
+  padding-left: 5px;
 }
 
 .edit-user-bio-label {

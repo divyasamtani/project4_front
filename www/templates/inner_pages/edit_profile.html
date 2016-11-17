@@ -23,17 +23,20 @@
 
 <!-- Edit User Location and Bio -->
 
-    <div id="edit-user-location-and-bio-wrapper">
-      <div class="row">
-        <div id="edit-user-location-div"
-           class="col col-80">
-          <label class="edit-user-location">Your Location </label>
-          <input type="text"
-                 name="location_status"
-                 placeholder="Where are you now?"
-                 ng-model="user.location_status">
-        </div>
+    <div id="edit-user-status-and-bio-wrapper">
+
+      <div  id="edit-user-status-div"
+            class="row">
+        <label class="edit-user-status-label col col-80">Your Status </label>
       </div>
+      <div class="row">
+        <textarea type="text"
+               id="edit-user-status"
+               placeholder="Travelling soon? Call out for tips!"
+               ng-model="user.location_status">
+        </textarea>
+      </div>
+
 
 
       <div id="edit-user-bio-wrapper">
@@ -42,7 +45,7 @@
         </div>
         <div class="row">
           <textarea id="edit-user-bio-text"
-                    placeholder="{{user.bio}}"
+                    placeholder="What are your travel interests?"
                     ng-model="user.bio">
           </textarea>
         </div>

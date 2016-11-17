@@ -11,7 +11,6 @@ app.controller('CreateNoteCtrl', ['$scope', '$auth', '$state','$http', function(
        data: $scope.newNote
      }).then(function(resp){
          console.log('note created');
-         $scope.newNote = {};
          $scope.notes.push(resp.data.note);
      }, function(resp){
         console.log(resp);
