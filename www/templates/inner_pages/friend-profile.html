@@ -16,10 +16,19 @@
            <div class="col travel-stat-number"> {{friend.world_coverage}} %</div>
         </div>
         <div class="row">
-          <div class="col col-100 travel-stat-label"> Current Location is   {{friend.location_status}} </div>
+          <div class="col col-100 travel-stat-label"> Travel Status: {{friend.travel_status}} </div>
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col col-100 current-location">
+        <span id='current-location-status'>
+          {{friend.location_status}}
+        </span>
+      </div>
+    </div>
+
 
 <!-- Profile Buttons -->
 <!--     <div class="row row-center" id="profile-button-section">
@@ -31,6 +40,7 @@
       </div>
     </div>
  -->
+
 <!-- Profile Bio -->
 
     <div class="row" id="profile-bio">

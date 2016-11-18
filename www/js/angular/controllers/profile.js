@@ -15,26 +15,6 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstan
     }).vectorMap('get', 'mapObject');
   };
 
-  var updateTravelStatus = function () {
-
-    if($scope.user.world_coverage <= 10){
-      $scope.user.travel_status  = 'Noob';
-    }
-    if($scope.user.world_coverage >= 11 && $scope.user.world_coverage <= 20){
-      $scope.user.travel_status = 'Well-Travelled';
-    }
-    if($scope.user.world_coverage >= 21 && $scope.user.world_coverage <= 40){
-      $scope.user.travel_status = 'Global Traveller';
-    }
-    if($scope.user.world_coverage >= 41 && $scope.user.world_coverage <= 60){
-      $scope.user.travel_status = 'World Expert';
-    }
-    if($scope.user.world_coverage >= 61 && $scope.user.world_coverage<= 100){
-      $scope.user.travel_status = 'Travel Warrior';
-    }
-  };
-
-
   var extractCountryCode = function () {
     var countryCode = [];
     for (var i = 0; i < $scope.countries.length; i++) {
@@ -46,17 +26,19 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstan
     $scope.user.countries_visited = countryCode.length;
     $scope.user.world_coverage    = Math.round($scope.user.countries_visited / COUNTRYCOUNT * 100);
 
-    updateTravelStatus();
     return countryCode;
   };
 
   var updateMap = function () {
+    mapObject.updateSize();
     mapObject.clearSelectedRegions();
     // Update map with the appropriate country codes
     mapObject.setSelectedRegions(extractCountryCode());
   };
 
-  var selectCountries = function (countries, userCountries) {
+  var selectCountries = function () {
+    var countries = $scope.countries;
+    var userCountries = $scope.userCountries;
     for (var i = 0; i < userCountries.length; i++) {
       for (var k = 0; k < countries.length; k++) {
         if (countries[k].id === userCountries[i].country_id) {
@@ -65,15 +47,17 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstan
         }
       }
     }
-    updateMap();
   };
 
-  var getUserCountries = function (countries) {
+  var getUserCountries = function () {
     $http({
       url: urlConstant.apiUrl + '/api/user/user_countries',
       method: 'GET'
     }).then(function(resp){
-      selectCountries(countries, resp.data);
+      $scope.userCountries = resp.data;
+      selectCountries();
+      generateMap();
+      updateMap();
     }, function(resp){
       console.log(resp);
     });
@@ -96,7 +80,8 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstan
         return a.concat(b);
       }, []);
 
-      getUserCountries($scope.countries);
+      getUserCountries();
+
     })
     .error(function(data) {
       console.log('server side error occurred');
@@ -104,7 +89,6 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstan
   };
 
   var init = function () {
-    generateMap();
     getCountriesTemplate();
   };
 

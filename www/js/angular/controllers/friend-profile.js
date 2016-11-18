@@ -4,6 +4,7 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
   var friendsID = $stateParams.friendsID;
   $scope.countries = [];
 
+
 // SHOW FRIEND INFORMATION
   var getFriendInfo = function(countries) {
     $http({
@@ -15,6 +16,8 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
       $scope.friend = resp.data.friend;
       $scope.friend.countries_visited = resp.data.friend.countries_visited;
       $scope.friend.world_coverage = Math.round(resp.data.friend.world_coverage);
+      $scope.friend.travel_status = resp.data.friend.travel_status;
+
 
     }), function(resp){
       console.log('error');

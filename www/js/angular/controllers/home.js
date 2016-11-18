@@ -1,4 +1,5 @@
 app.controller('HomeCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant', function($scope, $auth, $state, $http, urlConstant){
+  $scope.friendshipsList = {};
 
   var getUserFriends = function() {
     $http({

@@ -31,13 +31,11 @@
       </div>
       <div class="row">
         <textarea type="text"
-               id="edit-user-status"
-               placeholder="Travelling soon? Call out for tips!"
-               ng-model="user.location_status">
+                  id="edit-user-status"
+                  placeholder="Travelling soon? Call out for tips!"
+                  ng-model="user.location_status">
         </textarea>
       </div>
-
-
 
       <div id="edit-user-bio-wrapper">
         <div class="row">
@@ -62,7 +60,7 @@
           # Countries
         </div>
         <div class="col">
-          World Coverage
+          % Coverage
         </div>
         <div class="col">
           Travel Status
@@ -76,7 +74,8 @@
         <div class="col">
           {{user.world_coverage}} %
         </div>
-        <div class="col">
+        <div class="col"
+             ng-model="user.travel_status">
           {{user.travel_status}}
         </div>
       </div>

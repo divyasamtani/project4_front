@@ -1,7 +1,14 @@
 <ion-view view-title="Profile" name="tab-profile">
-  <ion-content class="padding">
+
+
+  <ion-nav-buttons side="right">
+    <button class="icon ion-log-out"
+            ng-click='SignOutBtnClick()'>
+    </button>
+  </ion-nav-buttons>
 
 <!-- Profile Image and Stats -->
+  <ion-content class="padding">
     <div class="row" id="profile-top-section">
       <div class="col col-25" id="profile-img-div">
         <img ng-src="{{user.image}}"  />
@@ -34,10 +41,6 @@
     <div class="row row-center" id="profile-button-section">
       <div class="profile-buttons">
 
-        <button   class="button button-dark profile-button"
-                  ng-click='SignOutBtnClick()'>
-                  Sign out
-        </button>
         <button   class="button button-dark profile-button"
                   ui-sref="profile.edit">
                   Edit Profile

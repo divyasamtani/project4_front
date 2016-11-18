@@ -132,7 +132,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
 
   .state('tab.profile',{
     url: '/profile',
-    cache: true,
+    cache: false,
     views: {
       'tab-profile': {
         templateUrl: "templates/tabs/profile.html",
