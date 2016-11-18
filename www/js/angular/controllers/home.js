@@ -2,6 +2,7 @@ app.controller('HomeCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant',
   $scope.friendshipsList = {};
 
   var getUserFriends = function() {
+    console.log('hello');
     $http({
       url: urlConstant.apiUrl + '/api/user/friendships',
       method: 'GET',
