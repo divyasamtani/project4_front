@@ -14,6 +14,24 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlCon
       });
   };
 
+  var updateTravelStatus = function () {
+    if($scope.user.world_coverage <= 10){
+      $scope.user.travel_status  = 'Noob';
+    }
+    if($scope.user.world_coverage >= 11 && $scope.user.world_coverage <= 20){
+      $scope.user.travel_status = 'Well-Travelled';
+    }
+    if($scope.user.world_coverage >= 21 && $scope.user.world_coverage <= 40){
+      $scope.user.travel_status = 'Global Traveller';
+    }
+    if($scope.user.world_coverage >= 41 && $scope.user.world_coverage <= 60){
+      $scope.user.travel_status = 'World Expert';
+    }
+    if($scope.user.world_coverage >= 61 && $scope.user.world_coverage<= 100){
+      $scope.user.travel_status = 'Travel Warrior';
+    }
+  };
+
   // CREATE MAP
   var generateMap = function () {
     mapObject = $('.profile-edit-map').vectorMap({
@@ -37,6 +55,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlCon
 
     $scope.user.countries_visited = countryCode.length;
     $scope.user.world_coverage    = Math.round($scope.user.countries_visited / COUNTRYCOUNT * 100);
+
 
     return countryCode;
   };
@@ -102,6 +121,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlCon
 
   var init = function () {
     getCountriesTemplate();
+
   };
 
   init();
@@ -118,6 +138,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlCon
     }).then(function(resp){
       country.userCountryID = resp.data.id;
       updateMap();
+      updateTravelStatus();
     }, function(resp){
       console.log(resp);
     });
@@ -130,6 +151,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlCon
     }).then(function(resp){
       delete country.userCountryID;
       updateMap();
+      updateTravelStatus();
     }, function(resp){
       console.log(resp);
     });

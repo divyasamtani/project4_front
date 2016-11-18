@@ -44,7 +44,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
 // Welcome Screen (after sign up)
   .state('welcome_screen',{
     url: '/welcome',
-    templateUrl: "templates/inner_pages/welcome_screen.html",
+    templateUrl: "templates/starting/welcome_screen.html",
     controller: 'WelcomeScreenCtrl'
   })
 
@@ -66,8 +66,25 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     url: '/home',
     views: {
       'tab-home': {
-        templateUrl: "templates/tabs/home.html",
+        templateUrl: "templates/home/home.html",
         controller: 'HomeCtrl'
+      }
+    }
+  })
+
+  .state('home',{
+    url: '/home',
+    cache: false,
+    abstract: true,
+    templateUrl: "templates/abstracts/home-notab.html"
+  })
+
+  .state('home.show',{
+    url: '/:friendsID',
+    views: {
+      'home-view@home': {
+        templateUrl: "templates/home/friend-profile-home.html",
+        controller: 'FriendProfileCtrl'
       }
     }
   })
@@ -77,8 +94,25 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     url: '/search',
     views: {
       'tab-search': {
-        templateUrl: "templates/tabs/search.html",
+        templateUrl: "templates/search/search.html",
         controller: 'SearchCtrl'
+      }
+    }
+  })
+
+  .state('search',{
+    url: '/search',
+    cache: false,
+    abstract: true,
+    templateUrl: "templates/abstracts/search-notab.html"
+  })
+
+  .state('search.show',{
+    url: '/:friendsID',
+    views: {
+      'search-view@search': {
+        templateUrl: "templates/search/friend-profile-search.html",
+        controller: 'FriendProfileCtrl'
       }
     }
   })
@@ -90,7 +124,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     cache: false,
     views: {
       'tab-notes': {
-        templateUrl: "templates/tabs/notes.html",
+        templateUrl: "templates/notes/notes.html",
         controller: 'NotesCtrl'
       }
     }
@@ -101,7 +135,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     url: '/notes',
     cache: false,
     abstract: true,
-    templateUrl: "templates/inner_pages/notes-notab.html"
+    templateUrl: "templates/abstracts/notes-notab.html"
   })
 
 // Create Note
@@ -110,7 +144,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     cache: false,
     views: {
       'notes-view@notes': {
-        templateUrl: "templates/inner_pages/create_note.html",
+        templateUrl: "templates/notes/create_note.html",
         controller: 'CreateNoteCtrl'
       }
     }
@@ -122,7 +156,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     cache: false,
     views: {
       'notes-view@notes': {
-        templateUrl: "templates/inner_pages/edit_note.html",
+        templateUrl: "templates/notes/edit_note.html",
         controller: 'EditNoteCtrl'
       }
     }
@@ -135,7 +169,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     cache: false,
     views: {
       'tab-profile': {
-        templateUrl: "templates/tabs/profile.html",
+        templateUrl: "templates/profile/profile.html",
         controller: 'ProfileCtrl'
       }
     }
@@ -146,7 +180,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     url: '/profile',
     cache: false,
     abstract: true,
-    templateUrl: "templates/inner_pages/profile-notab.html"
+    templateUrl: "templates/abstracts/profile-notab.html"
   })
 
 
@@ -156,7 +190,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     cache: false,
     views: {
       'profile-view@profile': {
-        templateUrl: "templates/inner_pages/edit_profile.html",
+        templateUrl: "templates/profile/edit_profile.html",
         controller: 'EditProfileCtrl'
       }
     }
@@ -168,7 +202,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     cache: false,
     views: {
       'profile-view@profile': {
-        templateUrl: "templates/inner_pages/index_user_friends.html",
+        templateUrl: "templates/profile/index_user_friends.html",
         controller: 'FriendsCtrl'
       }
     }
@@ -180,7 +214,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     cache: false,
     views: {
       'profile-view@profile': {
-        templateUrl: "templates/inner_pages/add_friendship.html",
+        templateUrl: "templates/profile/add_friendship.html",
         controller: 'AddFriendCtrl'
       }
     }
@@ -191,7 +225,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', '$ionicConf
     url: '/:friendsID',
     views: {
       'profile-view@profile': {
-        templateUrl: "templates/inner_pages/friend-profile.html",
+        templateUrl: "templates/profile/friend-profile.html",
         controller: 'FriendProfileCtrl'
       }
     }

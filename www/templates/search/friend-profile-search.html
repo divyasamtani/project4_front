@@ -1,0 +1,60 @@
+<ion-view view-title="Friend's Profile" name="search-notab-friend-profile">
+  <ion-nav-buttons side="left">
+    <button class="icon ion-ios-arrow-back"
+            ui-sref="tab.search">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="padding">
+<!-- Profile Image and Stats -->
+    <div class="row" id="profile-top-section">
+      <div class="col col-25" id="profile-img-div">
+        <img ng-src="{{friend.image}}"  />
+      </div>
+      <div class="col profile-stats">
+        <div class="row">
+          <div class="col col-75 travel-stat-label"> # Countries Visited </div>
+           <div class="col travel-stat-number"> {{friend.countries_visited}} </div>
+        </div>
+        <div class="row">
+          <div class="col col-75 travel-stat-label"> World Coverage </div>
+           <div class="col travel-stat-number"> {{friend.world_coverage}} %</div>
+        </div>
+        <div class="row">
+          <div class="col col-100 travel-stat-label"> Travel Status: {{friend.travel_status}} </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-100 current-location">
+        <span id='current-location-status'>
+          {{friend.location_status}}
+        </span>
+      </div>
+    </div>
+
+
+<!-- Profile Buttons -->
+<!--     <div class="row row-center" id="profile-button-section">
+      <div class="profile-buttons">
+        <button   class="button button-dark profile-button"
+                  ui-sref="#">
+                  See Friends
+        </button>
+      </div>
+    </div>
+ -->
+
+<!-- Profile Bio -->
+
+    <div class="row" id="profile-bio">
+      {{friend.bio}}
+    </div>
+
+<!-- Map -->
+    <div class="friend-profile-map">
+    </div>
+
+  </ion-content>
+</ion-view>

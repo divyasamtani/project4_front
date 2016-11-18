@@ -3,15 +3,10 @@
 <!-- Nav Buttons -->
   <ion-nav-buttons side="left">
     <div    class="button icon ion-ios-arrow-back"
-            ui-sref="tab.profile">
+            ui-sref="tab.profile"
+            ng-click="updateUserInfo(user)">
     </div>
   </ion-nav-buttons>
-  <ion-nav-buttons side="right">
-    <div class="ion-checkmark-round"
-         ng-click="updateUserInfo(user)">
-    </div>
-  </ion-nav-buttons>
-
 
 <!-- START OF CONTENT -->
   <ion-content class="padding">

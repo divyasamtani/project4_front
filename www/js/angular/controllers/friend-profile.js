@@ -1,5 +1,5 @@
 app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$stateParams', 'urlConstant', function($scope, $auth, $state, $http, $stateParams, urlConstant){
-  const COUNTRYCOUNT = 32;
+  const COUNTRYCOUNT = 176;
   var mapObject;
   var friendsID = $stateParams.friendsID;
   $scope.countries = [];
@@ -48,6 +48,7 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
   };
 
   var updateMap = function () {
+    mapObject.updateSize();
     mapObject.clearSelectedRegions();
     // Update map with the appropriate country codes
     mapObject.setSelectedRegions(extractCountryCode());

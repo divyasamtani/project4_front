@@ -11,6 +11,7 @@ app.controller('SearchCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstant
       method: 'GET',
     }).then(function(resp){
       $scope.friendsList = resp.data;
+      console.log(resp.data);
     }, function(resp){
       console.log(resp);
     });
