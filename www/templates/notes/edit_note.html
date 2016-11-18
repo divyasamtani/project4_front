@@ -3,24 +3,19 @@
   <!-- Cancel & Save buttons in header -->
   <ion-nav-buttons side="left">
     <button class="icon ion-ios-arrow-back"
-            ui-sref="tab.notes">
-    </button>
-  </ion-nav-buttons>
-
-  <ion-nav-buttons side="right">
-
-    <button class="icon ion-checkmark-round"
+            ui-sref="tab.notes"
             ng-click="editTravelNote()">
     </button>
   </ion-nav-buttons>
 
-
+  <ion-nav-buttons side="right">
+    <button class="icon ion-share"
+            ng-click="shareNote()">
+    </button>
+  </ion-nav-buttons>
 
   <!-- Show / Edit Travel Note Form  -->
   <ion-content class="padding">
-     <button class="button"
-             ng-click="shareNote()"> Share Note
-     </button>
     <form ng-submit="updateTravelNote()"
               class="list list-inset"
               role="form">
