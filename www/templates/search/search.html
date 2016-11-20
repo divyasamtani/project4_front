@@ -4,10 +4,11 @@
   <h5 id="country-search-header">Pick a country and see which of your friends have been there!</h5>
 
 <!-- Search Bar -->
-  <label class="item item-input">
+  <label class="item item-input search-input-label">
     <span class="icon ion-search placeholder-icon"></span>
     <input  type="search"
-            placeholder="Pick a country and see who’s been there!"
+            id="search-country-name"
+            placeholder="Type Country Here"
             ng-model="query.text"
             ng-change=searchFriendsUsingCountry()>
   </label>

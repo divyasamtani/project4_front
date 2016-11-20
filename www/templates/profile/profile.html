@@ -1,17 +1,20 @@
-<ion-view view-title="Profile" name="tab-profile">
+<ion-view view-title="My Profile" name="tab-profile">
 
 
   <ion-nav-buttons side="right">
-    <button class="icon ion-log-out"
+    <div class="icon ion-log-out"
             ng-click='SignOutBtnClick()'>
-    </button>
+    </div>
   </ion-nav-buttons>
 
 <!-- Profile Image and Stats -->
   <ion-content class="padding">
-    <div class="row" id="profile-top-section">
-      <div class="col col-25" id="profile-img-div">
+    <div class="row profile-top-section">
+      <div class="col col-25 profile-img-div">
         <img ng-src="{{user.image}}"  />
+        <span class="profile-user-name">
+          {{user.name}}
+        </span>
       </div>
       <div class="col profile-stats">
         <div class="row">
@@ -23,34 +26,34 @@
           <div class="col travel-stat-number"> {{user.world_coverage}} %</div>
         </div>
         <div class="row">
-          <div class="col col-100 travel-stat-label"> Travel Status: {{user.travel_status}} </div>
+          <div class="col col-100 travel-stat-label"> Travel Status: <span class="profile-travel-status"> {{user.travel_status}} </span> </div>
         </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col col-100 current-location">
-        <span id='current-location-status'>
-          {{user.location_status}}
-        </span>
       </div>
     </div>
 
 <!-- Profile Buttons -->
     <div class="row row-center" id="profile-button-section">
       <div class="profile-buttons">
-
-        <button   class="button button-dark profile-button"
+        <button   class="button button-small profile-button"
                   ui-sref="profile.edit">
                   Edit Profile
         </button>
-        <button   class="button button-dark profile-button"
+        <button   class="button button-small profile-button"
                   ui-sref="profile.friends">
                   See Friends
         </button>
       </div>
     </div>
+
+
+    <div class="row">
+      <div class="col col-100 current-location">
+        <span class='current-location-status'>
+          {{user.location_status}}
+        </span>
+      </div>
+    </div>
+
 
 <!-- Profile Bio -->
 

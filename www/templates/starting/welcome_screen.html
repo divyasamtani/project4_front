@@ -5,20 +5,20 @@
     <img src="img/travelimage1.jpg" id="welcomeimage">
 
     <!-- Header -->
-    <h1 id="welcome-header">Welcome to Zealist!</h1>
+    <h1 id="welcome-header" ng-model="user"> {{user.name}}, Welcome to Zealist</h1>
 
 
     <!-- Welecome Message -->
     <div id="welcome-message">
       <p>We love to travel just as much as you do, and we’re proud of it. </p>
-      <p>So we created a place for super travellers just like you to: </p>
+      <p>So we created a place for super travellers to: </p>
       <ol id="welcome-list-items">
         <li><span class="ion-android-checkbox-outline"></span>Track your travels</li>
         <li><span class="ion-android-bulb"></span>Inspire friends with your experiences</li>
-        <li><span  class="ion-happy-outline"></span>And be inspired by theirs</li>
+        <li><span  class="ion-happy-outline"></span>Be inspired by theirs</li>
       </ol>
 
-      <p>We hope you’ll find it valuable!</p>
+      <p id="final-line">We hope you’ll find it valuable!</p>
     </div>
 
   </ion-content>

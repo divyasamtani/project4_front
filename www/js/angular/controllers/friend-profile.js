@@ -29,9 +29,10 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
     mapObject = $('.friend-profile-map').vectorMap({
       map: 'world_mill',
       zoomOnScroll: false,
+      backgroundColor: 'black',
       regionStyle: {
         selected: {
-          fill: 'red'
+          fill: 'orange'
         }
       }
     }).vectorMap('get', 'mapObject');

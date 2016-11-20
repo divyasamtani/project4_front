@@ -4,9 +4,8 @@
 <!--     <ion-refresher on-refresh="doRefresh()"></ion-refresher> -->
     <ion-list>
       <div class="user-avatar row" ng-repeat="friendship in friendshipsList">
-<!--         <img src="{{user.picture.thumbnail}}" /> -->
-        <div class="home-user-img col col-20">
-          <img ng-src="{{friendship.friend.image}}"  />
+        <div class="home-user-img-div col col-20">
+          <img ng-src="{{friendship.friend.image}}" id="home-user-img"  />
         </div>
 
         <div class="user-list-name col col-75">

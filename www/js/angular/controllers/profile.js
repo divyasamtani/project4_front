@@ -7,9 +7,10 @@ app.controller('ProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlConstan
     mapObject = $('.profile-map').vectorMap({
       map: 'world_mill',
       zoomOnScroll: false,
+      backgroundColor: 'black',
       regionStyle: {
         selected: {
-          fill: 'red'
+          fill: 'orange'
         }
       }
     }).vectorMap('get', 'mapObject');

@@ -2,15 +2,15 @@
 
 <!-- Cancel button in top left header -->
   <ion-nav-buttons side="left">
-    <button class="icon ion-ios-arrow-back"
+    <div class="icon ion-ios-arrow-back"
             ui-sref="tab.notes">
-    </button>
+    </div>
   </ion-nav-buttons>
 
   <ion-nav-buttons side="right">
-    <button class="icon ion-checkmark-round"
+    <div class="icon ion-checkmark-round"
             ng-click="createTravelNote()">
-    </button>
+    </div>
   </ion-nav-buttons>
 
   <ion-content class="padding">
@@ -22,7 +22,7 @@
       <div id="note-title-div">
         <label class="note-title" for="new-note-title"> </label>
         <input type="text"
-               id="new-note-title"
+               class="note-copy"
                placeholder="Title of Trip"
                ng-model="newNote.title">
       </div>
@@ -30,6 +30,7 @@
       <div id="note-body-div">
         <label class="note-body-title" for="new-note-body"> </label>
         <textarea placeholder="Jot down your travel notes here"
+                  class="note-copy"
                   ng-model="newNote.body"
                   id="note-body">
         <textarea>

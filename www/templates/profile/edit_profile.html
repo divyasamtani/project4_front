@@ -2,7 +2,7 @@
 
 <!-- Nav Buttons -->
   <ion-nav-buttons side="left">
-    <div    class="button icon ion-ios-arrow-back"
+    <div    class="icon ion-ios-arrow-back"
             ui-sref="tab.profile"
             ng-click="updateUserInfo(user)">
     </div>
@@ -60,7 +60,7 @@
           % Coverage
         </div>
         <div class="col">
-          Travel Status
+          Status
         </div>
       </div>
 
@@ -83,18 +83,15 @@
     <div class="row profile-edit-map">
     </div>
 
-  <!-- Header -->
-    <h4 class="add-countries">
-      Add your countries!
-    </h4>
-
   <!-- Start of Country List -->
-    <ion-list>
+    <ion-list class="country-list">
       <div ng-repeat="(continent, countries) in continents">
-        <ion-item class="item-stable"
+        <ion-item class="item-stable continent-label"
                   ng-click="toggleGroup(continent)"
                   ng-class="{active: isGroupShown(continent)}">
-            <i class="icon" ng-class="isGroupShown(continent) ? 'ion-minus' : 'ion-plus'"></i>
+            <i class="icon"
+                ng-class="isGroupShown(continent) ? 'ion-minus' : 'ion-plus'">
+            </i>
           &nbsp;
           {{continent}}
         </ion-item>

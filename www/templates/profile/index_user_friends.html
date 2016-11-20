@@ -3,7 +3,7 @@
 
 <!-- Nav Buttons -->
   <ion-nav-buttons side="left">
-    <div    class="button icon ion-ios-arrow-back"
+    <div    class="icon ion-ios-arrow-back"
             ui-sref="tab.profile">
     </div>
   </ion-nav-buttons>
@@ -11,7 +11,7 @@
   <ion-content class="padding">
 
 <!-- Find New Friends Button -->
-    <button class="button find-friends" ui-sref="profile.friends.add">Find Friends</button>
+    <button class="button find-friends-button" ui-sref="profile.friends.add">Find Friends</button>
 
   <!-- Search for User Friend -->
     <label class="item item-input" ng-if="dataLoaded">
@@ -21,14 +21,14 @@
 
   <!-- List User Friends -->
     <ion-list>
-      <ion-item class="row" ng-repeat="friendship in friendshipList">
+      <ion-item class="row list-user-friends" ng-repeat="friendship in friendshipList">
 
         <img class="col col-20 friend-img" ng-src="{{friendship.friend.image}}">
         <div class="col col-70 friend-name"
              ui-sref=".show({friendsID: {{friendship.friend_id}}})">
             {{friendship.friend.name}}
         </div>
-        <div class="col col-10 icon ion-ios-close-empty"
+        <div class="col col-10 icon ion-ios-close-empty delete-friend-button"
             ng-click="deleteFriend({{friendship.id}}); friendshipList.splice($index, 1)"></div>
 
       </ion-item>

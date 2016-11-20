@@ -37,9 +37,10 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlCon
     mapObject = $('.profile-edit-map').vectorMap({
       map: 'world_mill',
       zoomOnScroll: false,
+      backgroundColor: 'black',
       regionStyle: {
         selected: {
-          fill: 'red'
+          fill: 'orange'
         }
       }
     }).vectorMap('get', 'mapObject');

@@ -28,6 +28,7 @@ app.controller('AddFriendCtrl', ['$scope', '$auth', '$state', '$http', 'urlConst
       responseType:'json',
     }).then(function(){
       console.log("friendship successfully added");
+      $scope.query = {text: ""};
     },function(resp){
       console.log(resp);
     });

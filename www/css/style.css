@@ -1,12 +1,30 @@
 /* Empty. Add your own CSS if you like */
 
+* {
+  font-family: 'Carrois Gothic SC', sans-serif;
+  }
+
+ion-content {
+  background: black;
+  color: white;
+}
+
+ion-nav-bar {
+  background: black;
+  color: white;
+}
+
+
 
 /******************** LOGIN ********************/
 
-h1{
+#auth-log-in{
   font-size: 20px;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  color: white;
+  font-family: 'Carrois Gothic SC', sans-serif;
+
 }
 
 #logo {
@@ -14,9 +32,12 @@ h1{
   margin: auto;
   width: 40%;
   margin-top: 120px;
-  margin-bottom: 50px;
 }
 
+.sign-up-button {
+  margin-top: 10px;
+  font-family: 'Carrois Gothic SC', sans-serif;
+}
 
 /****************** WELCOME SCREEN ***************/
 
@@ -24,12 +45,14 @@ h1{
   display: block;
   margin: auto;
   width: 100%;
-  margin-top: 10px;
 }
 
 #welcome-header {
-  font-size: 27px;
+  font-size: 23px;
   margin-bottom: 20px;
+  color: white;
+  text-align: center;
+  font-family: 'Carrois Gothic SC', sans-serif;
 }
 
 #welcome-message {
@@ -39,8 +62,11 @@ h1{
 
 #welcome-list-items li {
   margin-left: 20px;
-  padding: 2px;
-  margin-bottom: 20px;
+/*  padding: 2px;*/
+}
+
+#final-line{
+  margin-top: 15px;
 }
 
 #welcome-list-items li span{
@@ -48,21 +74,22 @@ h1{
   font-size: 25px;
 }
 
-
-
 /************** HOME FEED & SEARCH ***************/
 
-/*.home-user-img {
-  background-color: gray;
-  height: 70px;
-  margin-top: 3px;
-}*/
+
+#home-user-img {
+  border: 5px double #66FFb2;
+  border-radius: 50%;
+}
 
 .user-list-name {
+  margin-left: 10px;
+  margin-top: 2px;
 }
 
 #home-user-name {
   font-weight: bold;
+  color: #66FFb2;
 }
 
 #home-user-location {
@@ -76,6 +103,15 @@ h1{
 #country-search-header {
   margin-bottom: 20px;
   padding: 10px;
+  color: white;
+  font-family: 'Carrois Gothic SC', sans-serif;
+  text-align: center;
+  font-size: 16px;
+}
+
+#search-country-name {
+  font-family: 'Carrois Gothic SC', sans-serif;
+  color: white;
 }
 
 /********************** NOTES **********************/
@@ -84,72 +120,130 @@ h1{
   height: 400px;
 }
 
+#travel-note-body {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .save-note-button {
   display: block;
   margin: auto;
 }
 
-/*
-.new-note {
-  font-size: 140px;
+.note-copy{
+  font-family: 'Carrois Gothic SC', sans-serif;
 }
-.new-note .ion-comppose {
-  font-size: 140px;
-}*/
+
+.note-header{
+  background-color: #66FFb2;
+}
 
 /******************** USER PROFILE ********************/
 
-#profile-top-section{
-  height: 120px;
+.profile-top-section{
+  height: 100px;
   padding: 0px;
 }
 
-#profile-img-div {
+.profile-img-div {
   height: 60%;
-  margin-top: 15px;
+  text-align: center;
+  font-size: 15px;
 }
 
-#profile-img-div img {
+.profile-img-div img {
   display: block;
   width: 100%;
-  padding:1px;
-  border:1px solid #021a40;
+  border: 5px double #66FFb2;
+  border-radius: 50%;
+}
+
+.profile-user-name {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  display: block;
+}
+
+.friend-profile-user-name {
+  margin-top: 6px;
+  font-weight: bold;
+  font-size: 18px;
+  display: block;
 }
 
 .travel-stat-label {
   border-style: solid;
   border-width: 1px;
+  border-color: white;
   border-radius: 10px;
   margin:1px;
+  font-size: 13px;
+  padding: 2px;
   text-align: center;
+  color: #66FFb2;
 }
 
-.travel-stat-number {
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  text-align: center;
-  margin:1px;
-}
+.profile-stats {
+  padding: 0px;
 
-.profile-button {
-  margin:2px;
-  font-size: 15px;
-}
-
-#profile-bio {
-  padding-top: 5px;
-  margin-top: 10px;
-  border-style: solid;
-  border-width: 1px;
-  height: 100px;
 }
 
 .current-location {
   margin-top: 5px;
 }
 
-#current-location-status{
+.friend-current-location {
+  margin-top: 25px;
+}
+
+.friend-status {
+  margin-top: 10px;
+}
+
+.travel-stat-number {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  border-radius: 10px;
+  text-align: center;
+  margin:1px;
+  padding: 2px;
+  font-weight: bold;
+  color: white;
+}
+
+.profile-button {
+  margin-left: 10px;
+  font-family: 'Carrois Gothic SC', sans-serif;
+  background-color: #66FFb2;
+  font-size: 13px;
+  height: 10px;
+}
+
+#profile-button-section {
+  margin-top: 5px;
+}
+
+#profile-bio {
+  padding-top: 5px;
+  margin-top: 5px;
+  border-style: solid;
+  border-width: 1px;
+  height: 70px;
+  color: #66FFb2;
+  border-color: white;
+}
+
+.profile-travel-status {
+  font-weight: bold;
+  color: white;
+}
+
+
+.current-location-status{
   font-weight: bold;
 }
 
@@ -163,7 +257,7 @@ h1{
 .profile-buttons {
   display: block;
   margin: auto;
-  margin-top: 10px;
+  padding-left: 60px;
 }
 
 /******************** EDIT PROFILE ********************/
@@ -174,7 +268,8 @@ h1{
   margin: auto;
   width: 23%;
   padding:1px;
-  border:1px solid #021a40;
+  border: 5px double #66FFb2;
+  border-radius: 50%;
 }
 
 #edit-profile-username {
@@ -194,23 +289,34 @@ h1{
 .edit-user-status-label {
   width: 100%;
   font-size: 16px;
+  font-weight: bold;
+   color: #66FFb2;
 }
 
 #edit-user-status {
   width: 100%;
   padding-left: 5px;
   max-width: 57ch;
+  background: black;
+  color: white;
+  font-family: 'Carrois Gothic SC', sans-serif;
+
 }
 
 .edit-user-bio-label {
   margin: auto;
   width: 100%;
+  font-weight: bold;
   font-size: 16px;
   display: block;
+   color: #66FFb2;
 }
 
 #edit-user-bio-text {
   width: 100%;
+  background: black;
+  color: white;
+  font-family: 'Carrois Gothic SC', sans-serif;
 }
 
 #edit-user-stats-wrapper{
@@ -221,6 +327,8 @@ h1{
   height: 30px;
   text-align: center;
   margin-bottom: 5px;
+  font-weight: bold;
+  color: #66FFb2;
 }
 
 .edit-user-stats{
@@ -248,17 +356,40 @@ h1{
 }
 
 
+.continent-label, .country-list{
+  background-color: black;
+  color: white;
+}
+
+.item-accordion {
+  background: black;
+  color: white;
+}
+
+
 /******************* SEE FRIENDS ********************/
 
 
-.find-friends {
+.find-friends-button {
   display: block;
   margin: auto;
   margin-bottom: 10px;
+  font-family: 'Carrois Gothic SC', sans-serif;
+  background-color: #66FFb2;
+  font-size: 15px;
+  height: 16px;
+
 }
 
 .friend-img {
-/*Adjust width?*/
+  border: 1px double #66FFb2;
+  margin: 7px;
+  border-radius: 50%;
+}
+
+.list-user-friends{
+  background-color: black;
+  color: white;
 }
 
 
@@ -277,8 +408,23 @@ h1{
   margin-bottom: 10px;
 }
 
-.find-user-name, .friend-name {
+.find-user-name {
   margin-top: 13px;
+}
+
+.friend-name {
+  margin-top: 20px;
+}
+
+#search-user-name {
+  font-family: 'Carrois Gothic SC', sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.search-input-label{
+  background-color: black;
+  color: white;
 }
 
 
@@ -325,7 +471,7 @@ h1{
   font-size: 23px;
 }
 
-.ion-plus-circled, .ion-ios-close-empty {
+.ion-plus-circled {
   font-size: 35px;
   margin-top: 5px;
 }
@@ -334,9 +480,41 @@ h1{
   font-size: 55px;
   margin: 0 auto;
   display: block;
+  color: white;
 }
 
 .ion-checkmark-round {
+  font-size: 25px;
+  padding: 5px;
+}
+
+.ion-log-out {
+  font-size: 25px;
+  padding: 5px;
+}
+
+.ion-ios-arrow-back {
+  font-size: 25px;
+  padding: 5px;
+}
+
+.ion-social-facebook{
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.ion-share {
+  font-size: 25px;
+  padding: 5px;
+}
+
+.delete-friend-button {
+  font-size: 35px;
+  margin-top: 5px;
+  color: white;
+}
+
+.ion-ios-close-empty {
   font-size: 25px;
   padding: 5px;
 }

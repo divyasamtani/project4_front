@@ -1,4 +1,4 @@
-<ion-view view-title="Notes" name="notes">
+<ion-view view-title="Travel Notes" name="notes">
   <ion-content class="padding">
 
 <!-- Create Travel Note Button -->
@@ -11,7 +11,7 @@
     <ion-list>
       <div class="list card" ng-repeat="note in notes track by $index">
 
-        <div class="item item-divider"
+        <div class="item item-divider note-header"
              ui-sref="notes.show({noteID: {{note.id}}})">
             {{note.title}}
         </div>

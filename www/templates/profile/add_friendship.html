@@ -2,9 +2,10 @@
   <ion-content class="padding">
 
   <!-- User Search Bar -->
-    <label class="item item-input">
+    <label class="item item-input search-input-label">
       <span class="icon ion-search placeholder-icon"></span>
       <input  type="search"
+              id="search-user-name"
               placeholder="Search for User Name"
               ng-model="query.text"
               ng-change=searchUserName()>
