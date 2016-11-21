@@ -243,8 +243,8 @@ ion-nav-bar {
   border-style: solid;
   border-width: 1px;
   height: 70px;
-  color: #66FFb2;
-  border-color: white;
+  color: white;
+  border-color: #66FFb2;
 }
 
 .profile-travel-status {
