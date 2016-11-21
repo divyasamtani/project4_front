@@ -174,6 +174,7 @@ ion-nav-bar {
   display: block;
 }
 
+
 .travel-stat-label {
   border-style: solid;
   border-width: 1px;
@@ -196,7 +197,7 @@ ion-nav-bar {
 }
 
 .friend-current-location {
-  margin-top: 25px;
+  margin-top: 5px;
 }
 
 .friend-status {
@@ -221,6 +222,15 @@ ion-nav-bar {
   background-color: #66FFb2;
   font-size: 13px;
   height: 10px;
+}
+
+.friend-profile-button {
+  margin-left: 15px;
+  font-family: 'Carrois Gothic SC', sans-serif;
+  background-color: #66FFb2;
+  font-size: 13px;
+  height: 10px;
+  margin-top: 5px;
 }
 
 #profile-button-section {
@@ -255,6 +265,12 @@ ion-nav-bar {
 
 
 .profile-buttons {
+  display: block;
+  margin: auto;
+  padding-left: 60px;
+}
+
+.friend-profile-buttons {
   display: block;
   margin: auto;
   padding-left: 60px;

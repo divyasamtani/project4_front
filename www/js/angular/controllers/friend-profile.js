@@ -17,8 +17,7 @@ app.controller('FriendProfileCtrl', ['$scope', '$auth', '$state', '$http', '$sta
       $scope.friend.countries_visited = resp.data.friend.countries_visited;
       $scope.friend.world_coverage = Math.round(resp.data.friend.world_coverage);
       $scope.friend.travel_status = resp.data.friend.travel_status;
-
-
+      console.log(resp.data.friend);
     }), function(resp){
       console.log('error');
     };
