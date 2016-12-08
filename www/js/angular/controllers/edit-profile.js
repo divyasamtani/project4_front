@@ -56,7 +56,7 @@ app.controller('EditProfileCtrl', ['$scope', '$auth', '$state', '$http', 'urlCon
 
     $scope.user.countries_visited = countryCode.length;
     $scope.user.world_coverage    = Math.round($scope.user.countries_visited / COUNTRYCOUNT * 100);
-
+    updateTravelStatus();
 
     return countryCode;
   };
